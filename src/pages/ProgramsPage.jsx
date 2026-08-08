@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import '../App.css'
+import leadershipImage from '../assets/leadership-development.jpg'
+import communicationImage from '../assets/executive-communication.jpg'
+import aiImage from '../assets/ai-ready-workforce.jpg'
+import innovationImage from '../assets/organizational-excellence.jpg'
 
 const PROGRAM_DATA = [
   {
@@ -14,7 +18,7 @@ const PROGRAM_DATA = [
       'Online'
     ],
 
-    image: 'src/assets/leadership-development.jpg',
+    image: leadershipImage,
 
     theme: 'blue',
 
@@ -96,7 +100,7 @@ const PROGRAM_DATA = [
     ],
 
     image:
-      'src/assets/executive-communication.jpg',
+      communicationImage,
 
     theme: 'purple',
 
@@ -138,7 +142,7 @@ const PROGRAM_DATA = [
     ],
 
     image:
-      'src/assets/ai-ready-workforce.jpg',
+      aiImage,
 
     theme: 'cyan',
 
@@ -198,7 +202,7 @@ const PROGRAM_DATA = [
     ],
 
     image:
-      'src/assets/organizational-excellence.jpg',
+      innovationImage,
 
     theme: 'orange',
 

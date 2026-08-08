@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import '../App.css'
+import bgVideo from '../assets/bgvideo.mp4'
 
 export default function Hero({ onContactClick, onDemoClick }) {
   const bgVideoRef   = useRef(null)
@@ -21,7 +22,7 @@ export default function Hero({ onContactClick, onDemoClick }) {
  <video
   ref={bgVideoRef}
   className={`hero-bg-video ${videoLoaded ? 'loaded' : ''}`}
-  src="src\assets\bgvideo.mp4"
+  src={bgVideo}
   autoPlay
   muted
   loop
