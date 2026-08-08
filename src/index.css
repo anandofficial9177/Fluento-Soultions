@@ -1,0 +1,306 @@
+/* ═══════════════════════════════════════
+   FLUENTO — CSS Variables & Global Reset
+   fluentolearningsolutions.com
+═══════════════════════════════════════ */
+
+:root {
+  /* Brand Colors */
+  --navy:    #071A35;
+  --navy2:   #0C2344;
+  --royal:   #2563EB;
+  --royal2:  #1D4ED8;
+  --royalL:  #3B82F6;
+  --cyan:    #06B6D4;
+  --cyanBr:  #00D4FF;
+
+  /* Grays */
+  --white:   #FFFFFF;
+  --g50:     #F8FAFC;
+  --g100:    #F1F5F9;
+  --g200:    #E2E8F0;
+  --g300:    #CBD5E1;
+  --g400:    #94A3B8;
+  --g500:    #64748B;
+  --g600:    #475569;
+  --g700:    #334155;
+  --g800:    #1E293B;
+
+  /* Gradients */
+  --grad:  linear-gradient(135deg, #2563EB, #06B6D4);
+  --gradR: linear-gradient(135deg, #06B6D4, #2563EB);
+
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans',  system-ui;
+  --font-body:    'system-ui', system-ui,  system-ui;
+
+  /* Spacing */
+  --section-py: 88px;
+  --inner-max:  1060px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--g800);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+img, svg { display: block; }
+
+a { text-decoration: none; }
+
+button { cursor: pointer; font-family: inherit; }
+
+/* ── Scroll reveal animations ── */
+.sr {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.sr.visible { opacity: 1; transform: translateY(0); }
+
+.sl {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.sl.visible { opacity: 1; transform: translateX(0); }
+
+.srr {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.srr.visible { opacity: 1; transform: translateX(0); }
+
+.sc {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.sc.visible { opacity: 1; transform: scale(1); }
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* ── Keyframes ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lineUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(-28px, 18px) scale(1.05); }
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
+}
+
+@keyframes ripple {
+  to { transform: translate(-50%, -50%) scale(3.5); opacity: 0; }
+}
+
+@keyframes timelineFill {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* ── Shared utility classes ── */
+.inner {
+  max-width: var(--inner-max);
+  margin: 0 auto;
+}
+
+.section {
+  padding: var(--section-py) 28px;
+}
+
+.section-alt {
+  background: var(--g50);
+}
+
+.section-dark {
+  background: var(--navy);
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.sec-h2 {
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.12;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+
+.sec-sub {
+  font-size: 13px;
+  color: var(--g500);
+  line-height: 1.8;
+  max-width: 540px;
+}
+
+.sh        { margin-bottom: 48px; }
+.sh-center { text-align: center; }
+.sh-center .sec-sub { margin: 0 auto; }
+
+.grad-text {
+  background: linear-gradient(135deg, var(--cyanBr), var(--royalL));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Shared Btn ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  font-family: var(--font-heading);
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--grad);
+  color: #fff;
+  box-shadow: 0 0 24px rgba(37, 99, 235, 0.4);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(37, 99, 235, 0.6);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-white {
+  background: #fff;
+  color: var(--navy);
+}
+.btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(7, 26, 53, 0.2);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+  border: 1.5px solid var(--g300);
+}
+.btn-outline:hover {
+  border-color: var(--royal);
+  color: var(--royal);
+  transform: translateY(-1px);
+}
+
+/* ── Tag chip ── */
+.ptag {
+  padding: 3px 9px;
+  border-radius: 100px;
+  font-size: 9px;
+  font-weight: 700;
+  background: var(--g100);
+  color: var(--g600);
+}
+.ptag-active {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--cyan);
+}
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  top: 80px;
+  right: 16px;
+  background: var(--navy);
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  z-index: 700;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 28px rgba(7, 26, 53, 0.4);
+  max-width: 280px;
+  animation: fadeUp 0.3s ease;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  :root { --section-py: 60px; }
+}
+@media (max-width: 640px) {
+  :root { --section-py: 48px; }
+}
