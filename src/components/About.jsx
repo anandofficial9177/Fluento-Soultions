@@ -74,7 +74,7 @@ export default function About({ onNavigate, onBookClick }) {
             </p>
             <p style={{ fontSize: 13, color: 'var(--g500)', lineHeight: 1.8, marginBottom: 18 }}>
               Through executive masterclasses, leadership consulting, coaching, and customized learning
-              solutions, we don't simply deliver training — we build organizational capability that drives
+              solutionsssss, we don't simply deliver training — we build organizational capability that drives
               measurable business results.
             </p>
 
