@@ -4,7 +4,7 @@ const PROGRAMS = ['Leadership Dev Lab','Executive Communication','AI Ready Workf
 const COMPANY  = ['About Us','Our Experts','How We Work','Contact Us']
 const COMPANY_NAV = ['about','about','how','contact']
 
-export default function Footer({ onNavigate, onBookClick, onDemoClick, onToast }) {
+export default function Footer({ onNavigate, onContactClick, onDemoClick, onToast }) {
   return (
     <footer className="footer">
       <div className="footer-grid">
@@ -94,8 +94,8 @@ export default function Footer({ onNavigate, onBookClick, onDemoClick, onToast }
           <h5>Connect</h5>
           <ul className="footer-links">
             <li><a>fluentolearningsolutions@gmail.com</a></li>
-            <li><a onClick={onBookClick}>Book Consultation</a></li>
-            <li><a onClick={() => onToast('Downloading brochure...')}>Download Brochure</a></li>
+            <li><a onClick={onContactClick}>Book Consultation</a></li>
+            {/* <li><a onClick={() => onToast('Downloading brochure...')}>Download Brochure</a></li> */}
             <li><a onClick={onDemoClick}>Watch Demo</a></li>
           </ul>
         </div>

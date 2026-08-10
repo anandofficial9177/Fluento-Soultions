@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import '../App.css'
-import leadershipImage from '../assets/leadership-development.jpg'
-import communicationImage from '../assets/executive-communication.jpg'
-import aiImage from '../assets/ai-ready-workforce.jpg'
-import innovationImage from '../assets/organizational-excellence.jpg'
+import Footer from '../components/Footer'
+
+
 
 const PROGRAM_DATA = [
   {
@@ -18,7 +17,7 @@ const PROGRAM_DATA = [
       'Online'
     ],
 
-    image: leadershipImage,
+    image: 'src/assets/leadership-development.jpg',
 
     theme: 'blue',
 
@@ -100,7 +99,7 @@ const PROGRAM_DATA = [
     ],
 
     image:
-      communicationImage,
+      'src/assets/executive-communication.jpg',
 
     theme: 'purple',
 
@@ -142,7 +141,7 @@ const PROGRAM_DATA = [
     ],
 
     image:
-      aiImage,
+      'src/assets/ai-ready-workforce.jpg',
 
     theme: 'cyan',
 
@@ -202,7 +201,7 @@ const PROGRAM_DATA = [
     ],
 
     image:
-      innovationImage,
+      'src/assets/organizational-excellence.jpg',
 
     theme: 'orange',
 
@@ -234,14 +233,98 @@ const PROGRAM_DATA = [
       </svg>
     )
   }
+  
 ]
+const PROGRAM_DETAILS = {
+
+  'Leadership Development Lab': {
+
+    intro:
+      "Today's organizations need leaders who can do more than manage- they must inspire, influence, adapt, and drive meaningful results. The Leadership Development Lab is an immersive executive course designed to cultivate leadership capability at every level, equipping participants with the mindset and practical skills to lead confidently in an increasingly complex business environment. Participants explore leadership styles, team dynamics, and strategic decision-making through immersive experiences that go beyond theory.",
+
+    customization:
+      "Every Leadership Development Lab is fully tailored to your organization's leadership maturity, business objectives, industry context, and organizational challenges. We believe leadership development should never be generic- it should be designed around the leaders you have and the leaders you aspire to build.",
+
+    benefits: [
+      "Master the Transition Triad: Successfully shift your focus from personal output to team-wide excellence.",
+      "Enhanced Executive Presence: Lead with the credibility and confidence required to influence stakeholders across all levels.",
+      "Strategic Team Building: Cultivate high-performing teams by fostering accountability, collaboration, and psychological safety.",
+      "Advanced Decision Intelligence: Develop the mindset to make informed strategic choices in complex, dynamic business environments.",
+      "Measurable Performance: Translate leadership principles into actionable blueprints that drive immediate business results."
+    ]
+
+  },
 
 
-export default function Programs({ onNavigate }) {
+  'Executive Communication & Strategic Influence': {
+
+    intro:
+      "In today's business landscape, communication is more than a skill—it is a strategic advantage. From boardroom presentations to persuasive storytelling, participants learn to command attention and shape outcomes as part of the Executive Communication & Strategic Influence course. Designed around real organizational scenarios, the program transforms communication into a powerful leadership capability. It equips the learners to make business case presentations, influence stakeholders, lead meetings and navigate complex workspace conversations. This course is designed to transform how executives communicate with confidence and influence with purpose.",
+
+    customization:
+      "Every session is customized to reflect your organization's communication culture, business environment, leadership expectations, and industry-specific challenges. Every learning journey is designed to solve real communication needs—not deliver generic content.",
+
+    benefits: [
+      "Command the Boardroom: Deliver persuasive business cases and presentations that shape executive outcomes.",
+      "Strategic Data Storytelling: Master the skill of using information to structure clear, impactful discussions for meetings and proposals.",
+      "Navigate Complex Conversations: Gain the professionalism and tactical skills required for difficult negotiations and cross-cultural communication.",
+      "Influence Without Authority: Strengthen your ability to align stakeholders and drive organizational change through purposeful dialogue.",
+      "Credibility & Representation: Represent your organization with a refined presence that builds lasting trust with internal and external partners."
+    ]
+
+  },
+
+
+  'AI Ready Workforce': {
+
+    intro:
+      "Artificial Intelligence is transforming the way organizations work but people determine organizational growth. The AI Ready Workforce course bridges the gap between digital fluency and human intelligence. Rather than concentrating solely on technology, the program explores how organizations can build adaptable, future-ready teams. Participants explore how to combine critical thinking, creativity, collaboration and ethical leadership with AI-powered tools to create a lasting competitive advantage.",
+
+    customization:
+      "Every AI Ready Workforce program is designed specifically around your organization's digital maturity, workforce capability, transformation goals, and industry landscape. We tailor every learning experience to ensure immediate relevance and business impact.",
+
+    benefits: [
+      "Develop an AI-Ready Mindset: Shift from tech-avoidance to a strategic mindset that embraces AI as a catalyst for business growth.",
+      "Exponential Productivity: Increase efficiency through workflow automation and the effective use of AI-powered research and communication tools.",
+      "Strengthen Human-Centric Skills: Enhance critical thinking, emotional intelligence, and creativity—skills that remain uniquely human in the digital age.",
+      "Responsible AI Governance: Identify opportunities for ethical AI adoption and learn to manage the risks of digital transformation.",
+      "Future-Ready Roadmaps: Build practical action plans to align your workforce's digital maturity with the organization’s transformation goals."
+    ]
+
+  },
+
+
+  'Organizational Excellence & Innovation': {
+
+    intro:
+      "Sustainable success is achieved when organizations continuously evolve, innovate, and build the capability to respond to change. The Organizational Excellence & Innovation course explores the intersection of business intelligence and creative problem-solving. Participants learn to build agile organizations that can sense and respond to external shifts before they impact the enterprise. Through a highly engaging learning experience, participants explore how high-performing organizations create alignment between strategy, people, innovation, and execution- without losing sight of long-term sustainability.",
+
+    customization:
+      "Recognizing that every organization is unique, the sessions are fully customized to your strategic priorities, organizational culture, operational challenges, and desired business outcomes. Our approach ensures that every solution is practical, relevant, and immediately applicable within your organizational context.",
+
+    benefits: [
+      "Drive Sustained Profitability: Learn to balance short-term operational needs with the long-term visionary thinking required for sustainable growth.",
+      "Build Social Architecture: Create a culture of continuous improvement and innovation that attracts and retains top talent.",
+      "Cross-Functional Alignment: Improve collaboration across teams to ensure that all business units are aligned with the enterprise vision.",
+      "Change Leadership Mastery: Gain the tools to lead large-scale change initiatives effectively, minimizing burnout and maximizing engagement.",
+      "Actionable Growth Strategies: Develop competitive strategies and business models that ensure long-term sustainability in an evolving market."
+    ]
+
+  }
+
+}
+
+
+
+export default function Programs({   onNavigate,
+  onContactClick,
+  onDemoClick,
+  onToast }) {                  
 
   const sectionRef = useRef(null)
 
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex,] = useState(0)
+  const [selectedProgram, setSelectedProgram] = useState(null)
 
 
   useEffect(() => {
@@ -278,33 +361,33 @@ export default function Programs({ onNavigate }) {
   }, [])
 
 
-  const goNext = () => {
+  // const goNext = () => {
 
-    setActiveIndex(
-      prev =>
-        prev === PROGRAM_DATA.length - 1
-          ? 0
-          : prev + 1
-    )
+  //   setActiveIndex(
+  //     prev =>
+  //       prev === PROGRAM_DATA.length - 1
+  //         ? 0
+  //         : prev + 1
+  //   )
 
-  }
+  // }
 
 
-  const goPrev = () => {
+  // const goPrev = () => {
 
-    setActiveIndex(
-      prev =>
-        prev === 0
-          ? PROGRAM_DATA.length - 1
-          : prev - 1
-    )
+  //   setActiveIndex(
+  //     prev =>
+  //       prev === 0
+  //         ? PROGRAM_DATA.length - 1
+  //         : prev - 1
+  //   )
 
-  }
+  // }
 
 
   return (
 
-    <section
+    <div
       ref={sectionRef}
       className="programs-section"
       id="programs"
@@ -369,9 +452,9 @@ export default function Programs({ onNavigate }) {
         <div className="program-carousel-wrapper">
 
 
-          {/* Previous
+          {/* Previous */}
 
-          <button
+          {/* <button
             type="button"
             className="program-nav program-nav-prev"
             onClick={goPrev}
@@ -412,15 +495,17 @@ export default function Programs({ onNavigate }) {
 
                 <article
                   key={program.title}
-              className={`
-  program-card
-  program-card-${program.theme}
-  program-reveal
-  ${index === activeIndex ? 'program-active' : ''}
-`}
-                  onClick={() =>
-                    onNavigate?.('programs')
-                  }
+                  className={`
+                    program-card
+                    program-card-${program.theme} 
+                    program-reveal
+                    ${index === activeIndex ? 'program-active' : ''}
+                  `}
+                  onClick={(e) => {
+    e.stopPropagation()
+    setSelectedProgram(program)
+  }
+}
                 >
 
 
@@ -494,13 +579,11 @@ export default function Programs({ onNavigate }) {
                     <button
                       type="button"
                       className="program-explore"
-                      onClick={event => {
+    onClick={(e) => {
+    e.stopPropagation()
+    setSelectedProgram(program)
+  }}
 
-                        event.stopPropagation()
-
-                        onNavigate?.('programs')
-
-                      }}
                     >
 
                       <span>
@@ -526,9 +609,9 @@ export default function Programs({ onNavigate }) {
 
 
 
-          {/* Next
+          {/* Next */}
 
-          <button
+          {/* <button
             type="button"
             className="program-nav program-nav-next"
             onClick={goNext}
@@ -590,32 +673,293 @@ export default function Programs({ onNavigate }) {
             VIEW ALL
         ================================================== */}
 
-        <div className="programs-view-all">
+         <div className="programs-view-all">
 
-          <button
-            type="button"
-            className="program-view-button"
-            onClick={() =>
-              onNavigate?.('programs')
-            }
-          >
+      {/* <button
+        type="button"
+        className="program-view-button"
+        onClick={() =>
+          onNavigate?.('programs')
+        }
+      >
 
-            <span>
-              View All Program Details
-            </span>
+        <span>
+          View All Program Details
+        </span>
 
-            <span>
-              →
-            </span>
+        <span>
+          →
+        </span>
 
-          </button>
+      </button> */}
+
+    </div>
+
+  </div>
+
+
+{/* ==================================================
+    PROGRAM DETAILS POPUP
+================================================== */}
+
+{selectedProgram && (
+
+  <div
+    className="program-popup-overlay"
+    onClick={() => setSelectedProgram(null)}
+  >
+
+    <div
+      className="program-popup"
+      onClick={(e) => e.stopPropagation()}
+    >
+
+      {/* ================================================
+          CLOSE BUTTON
+      ================================================ */}
+
+      <button
+        type="button"
+        className="program-popup-close"
+        onClick={() => setSelectedProgram(null)}
+        aria-label="Close program details"
+      >
+        ×
+      </button>
+
+
+      {/* ================================================
+          HERO IMAGE
+      ================================================ */}
+
+      <div className="program-popup-image">
+
+        <img
+          src='src/assets/leadership-details.jpg'
+  
+        />
+
+        <div className="program-popup-image-overlay" />
+
+
+        <div className="program-popup-heading">
+{/* 
+          <span>
+            FLUENTO LEARNING PROGRAM
+          </span>
+
+          <h2>
+            {selectedProgram.title}
+          </h2> */}
 
         </div>
 
       </div>
 
-    </section>
+
+      {/* ================================================
+          CONTENT
+      ================================================ */}
+
+      <div className="program-popup-content">
+
+        {(() => {
+
+          const details =
+            PROGRAM_DETAILS[selectedProgram.title]
+
+          if (!details) {
+            return (
+              <p>
+                Program details are currently
+                unavailable.
+              </p>
+            )
+          }
+
+          return (
+            <>
+
+              {/* ==========================================
+                  PROGRAM OVERVIEW
+              ========================================== */}
+
+              <div className="program-popup-section">
+
+                <div className="program-popup-label">
+                  PROGRAM OVERVIEW
+                </div>
+
+                <p className="program-popup-intro">
+                  {details.intro}
+                </p>
+
+              </div>
+
+
+              {/* ==========================================
+                  CUSTOMIZATION
+              ========================================== */}
+
+              <div className="program-popup-customization">
+
+                <div className="program-popup-label">
+                  TAILORED FOR YOUR ORGANIZATION
+                </div>
+
+                <p>
+                  {details.customization}
+                </p>
+
+              </div>
+
+
+              {/* ==========================================
+                  COURSE BENEFITS
+              ========================================== */}
+
+              <div className="program-popup-benefits">
+
+                <div className="program-popup-label">
+                  COURSE BENEFITS
+                </div>
+
+
+                <div className="program-benefits-list">
+
+                  {details.benefits.map(
+                    (benefit, index) => {
+
+                      const separator =
+                        benefit.indexOf(': ')
+
+                      const heading =
+                        separator !== -1
+                          ? benefit.substring(
+                              0,
+                              separator
+                            )
+                          : benefit
+
+                      const description =
+                        separator !== -1
+                          ? benefit.substring(
+                              separator + 2
+                            )
+                          : ''
+
+                      return (
+
+                        <div
+                          key={index}
+                          className="program-benefit"
+                        >
+
+                          <div className="program-benefit-number">
+
+                            {String(index + 1).padStart(
+                              2,
+                              '0'
+                            )}
+
+                          </div>
+
+
+                          <div className="program-benefit-text">
+
+                            <strong>
+                              {heading}
+                              {description && ':'}
+                            </strong>
+
+                            {description && (
+                              <span>
+                                {' '}
+                                {description}
+                              </span>
+                            )}
+
+                          </div>
+
+                        </div>
+
+                      )
+
+                    }
+                  )}
+
+                </div>
+
+              </div>
+
+
+              {/* ==========================================
+                  POPUP FOOTER
+              ========================================== */}
+
+              <div className="program-popup-footer">
+
+                <div>
+
+                  <strong>
+                    Ready to build this capability?
+                  </strong>
+
+                  <small>
+                    Let's create a learning journey
+                    designed around your organization.
+                  </small>
+
+                </div>
+
+
+                <button
+                  type="button"
+                  className="program-popup-cta"
+                  onClick={() => {
+
+                    setSelectedProgram(null)
+
+                    onNavigate?.('contact')
+
+                  }}
+                >
+
+                  Book a Consultation
+
+                  <span>
+                    →
+                  </span>
+
+                </button>
+
+              </div>
+
+            </>
+          )
+
+        })()}
+
+      </div>
+
+    </div>
+
+  </div>
+
+)}
+        <Footer
+          onNavigate={onNavigate}
+          onContactClick={onContactClick}
+          onDemoClick={onDemoClick}
+          onToast={onToast}
+        /> 
+
+</div>
+    
+    
 
   )
+  
+  
 
-}
+}               
