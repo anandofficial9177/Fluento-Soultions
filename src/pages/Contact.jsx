@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import Footer from '../components/Footer'
-import contactImage from '../assets/Contactformimagebg.jpg'
+import contactImage from '../assets/contactformimagebg.jpg'
 
 // ══════════════════════════════════════════════════════
 //  EmailJS Configuration
