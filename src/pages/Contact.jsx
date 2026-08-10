@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import Footer from '../components/Footer'
+import contactImage from '../assets/Contactformimagebg.jpg'
 
 // ══════════════════════════════════════════════════════
 //  EmailJS Configuration
@@ -225,7 +226,7 @@ export default function Contact({ onNavigate, onBookClick, onDemoClick, onToast 
 
   <div className="contact-visual-image">
     <img
-      src="src/assets/Contactformimagebg.jpg"
+      src={contactImage}
       alt="Corporate training and professional learning"
     />
 

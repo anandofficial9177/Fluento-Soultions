@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import '../App.css'
 import Footer from '../components/Footer'
+import leadershipImage from '../assets/leadership-development.jpg'
+import communicationImage from '../assets/executive-communication.jpg'
+import aiImage from '../assets/ai-ready-workforce.jpg'
+import innovationImage from '../assets/organizational-excellence.jpg'
+import leadershipImageDetail from '../assets/leadership-details.jpg'
+import communicationImageDetail from '../assets/executive-details.jpg'
+import aiImageDetail from '../assets/ai-ready-details.jpg'
+import innovationImageDetail from '../assets/organizational-details.jpg'
 
 
 
@@ -17,7 +25,8 @@ const PROGRAM_DATA = [
       'Online'
     ],
 
-    image: 'src/assets/leadership-development.jpg',
+    image: leadershipImage,
+    detailImage: leadershipImageDetail,
 
     theme: 'blue',
 
@@ -99,7 +108,10 @@ const PROGRAM_DATA = [
     ],
 
     image:
-      'src/assets/executive-communication.jpg',
+      communicationImage,
+
+    detailImage:
+      communicationImageDetail,
 
     theme: 'purple',
 
@@ -141,7 +153,10 @@ const PROGRAM_DATA = [
     ],
 
     image:
-      'src/assets/ai-ready-workforce.jpg',
+      aiImage,
+
+    detailImage:
+      aiImageDetail,
 
     theme: 'cyan',
 
@@ -201,7 +216,10 @@ const PROGRAM_DATA = [
     ],
 
     image:
-      'src/assets/organizational-excellence.jpg',
+      innovationImage,
+
+    detailImage:
+      innovationImageDetail,
 
     theme: 'orange',
 
@@ -735,7 +753,7 @@ export default function Programs({   onNavigate,
       <div className="program-popup-image">
 
         <img
-          src='src/assets/leadership-details.jpg'
+          src={selectedProgram.detailImage}
   
         />
 
@@ -743,12 +761,12 @@ export default function Programs({   onNavigate,
 
 
         <div className="program-popup-heading">
-{/* 
-          <span>
-            FLUENTO LEARNING PROGRAM
-          </span>
 
-          <h2>
+          {/* <span>
+            FLUENTO LEARNING PROGRAM
+          </span> */}
+
+          {/* <h2>
             {selectedProgram.title}
           </h2> */}
 
