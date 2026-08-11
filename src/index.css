@@ -173,6 +173,7 @@ button { cursor: pointer; font-family: inherit; }
   text-transform: uppercase;
   display: block;
   margin-bottom: 10px;
+  font-size:"14px";
 }
 
 .sec-h2 {
