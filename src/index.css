@@ -304,3 +304,20 @@ button { cursor: pointer; font-family: inherit; }
 @media (max-width: 640px) {
   :root { --section-py: 48px; }
 }
+
+@font-face {
+  font-family: "Mokoto";
+  src: url("./assets/fonts/Mokoto\ Demo.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mental";
+  src: url("./assets/fonts/Fontspring-DEMO-mental_thin.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-weight: bolder;
+}

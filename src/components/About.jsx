@@ -64,8 +64,8 @@ export default function About({ onNavigate, onBookClick }) {
 
           {/* ── Right: Content ── */}
           <div className="srr">
-            <span className="eyebrow">About FLUENTO</span>
-            <h2 className="sec-h2">We Don't Just Deliver Training — We Build Capability</h2>
+            <span className="eyebrow">OUR STORY </span>
+            <h2 className="sec-h2">Learning that moves <br/>Organizations forward</h2>
 
             <p style={{ fontSize: 13, color: 'var(--g500)', lineHeight: 1.8, marginBottom: 14 }}>
               At FLUENTO Corporate Learning Solutions, we help organizations build future-ready leaders,
@@ -80,9 +80,10 @@ export default function About({ onNavigate, onBookClick }) {
 
             <div className="check-list">
               {[
-                ['Academic + Practical', '— Commonwealth SplitSite Doctoral Fellowship expertise'],
-                ['AI-Driven World Ready', '— Human skills + digital fluency, together'],
-                ['Measurable Results',    '— Business impact, not just training checkboxes'],
+                ['CUSTMOIZED CONTEXT', '— Designed around your needs'],
+                ['PEOPLE + PERFORMANCE', '— Growth that drives outcomes'],
+                ["BUILT FOR WHAT'S NEXT", '— Ready for AI, innovation and change'],
+                ['MEASURABLE RESULTS',    '— Business impact, not just training checkboxes'],
               ].map(([bold, rest]) => (
                 <div key={bold} className="check-item">
                   <div className="check-dot">
@@ -96,7 +97,7 @@ export default function About({ onNavigate, onBookClick }) {
             </div>
 
             <button className="btn btn-primary" onClick={() => onNavigate('about')}>
-              Meet Our Experts →
+              MORE ABOUT US →
             </button>
           </div>
         </div>

@@ -1,18 +1,18 @@
 import '../App.css'
 
 const TRADITIONAL = [
-  'Generic off-the-shelf content, zero customization',
-  'Disconnected from real business challenges',
-  'No post-training coaching or follow-through',
-  'No AI readiness or future-skills integration',
-  'ROI is anecdotal, never quantified',
+  '<strong>One-Size-Fits-All</strong> – Generic content, limited customization',
+  '<strong>Theory Without Context</strong> – Concepts disconnected from real challenges',
+  '<strong>Event-Based</strong> – Attend, listen, leave',
+  '<strong>Passive</strong> – Information over interaction',
+  '<strong>Completion-Focused</strong> – Attendance over impact',
 ]
 const FLUENTO = [
-  'Fully customized programs aligned to business outcomes',
-  'Industry-specific expertise — oil & gas, IT, finance, BFSI',
-  'Executive coaching with milestone accountability',
-  'AI fluency integrated across every learning program',
-  'Quantified impact reports with measurable ROI',
+  '<strong>Tailored by Design</strong> – Built around your needs',
+  '<strong>Learn by Doing</strong> – Practical and experiential',
+  '<strong>Expert-Led</strong> – Qualified coaches and experienced mentors',
+  '<strong>Learning that Flows</strong> – Organic, engaging, effortless',
+  '<strong>Capability with Purpose</strong> – Learning tied to business needs',
 ]
 
 const XIcon = () => (

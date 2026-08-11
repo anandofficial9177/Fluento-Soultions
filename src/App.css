@@ -51,7 +51,7 @@
   height: 62px;
   /* Dark navy glass pill */
   /* background: rgba(7, 26, 53, 0.96); */
-  background: white;
+  background: floralwhite;
   border-radius: 100px;          /* full pill shape */
   padding: 0 8px 0 22px;
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -77,7 +77,7 @@
 .pill-logo {
   display: flex;
   align-items: center;
-  gap: 9px;
+  /* gap: 9px; */
   background: none;
   border: none;
   cursor: pointer;
@@ -86,19 +86,19 @@
   margin-right: 6px;
 }
 .pill-logo-name {
-  font-family: var(--font-heading);
-  font-size: 17px;
-  font-weight: 900;
-  color: orange;
-  letter-spacing: -0.5px;
-  line-height: 1;
+  font-family: "Mokoto", "sans-serif" !important;
+ font-size: 22px;
+    font-weight: 900;
+    color: black;
+    letter-spacing: 4.5px;
 }
 .pill-logo-tag {
-  font-size: 7.5px;
-  color: orange;
+  font-family: "Mental", sans-serif;
+  color: black;
+  font-weight: bold;
   letter-spacing: 1.6px;
-  text-transform: uppercase;
-  margin-top: 2px;
+  /* text-transform: uppercase; */
+  /* margin-top: 2px; */
 }
 
 /* ── Nav links ── */
@@ -117,7 +117,7 @@
   padding: 8px 13px;
   background: none;
   border: none;
-  font-family: var(--font-body);
+  font-family: 'Barlow', sans-serif;
   font-size: 12.5px;
   font-weight: 500;
   color: black;
@@ -147,7 +147,7 @@
   background: rgba(255, 255, 255, 0.06);
 }
 .pill-link.pill-link-active {
-  color: black;
+  color: firebrick;
   font-weight: 600;
 }
 .pill-link:hover::after,
@@ -159,6 +159,7 @@
 .pill-actions { display: flex; gap: 7px; align-items: center; flex-shrink: 0; }
 .section{
   background:floralwhite !important;
+  padding:10px 10px 24px 10px;
 }
 .video-showcase{
   background:floralwhite !important;
@@ -312,7 +313,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   padding: 0;
   background: var(--navy);
 }
@@ -396,10 +397,9 @@
 
 /* H1 — bigger, more cinematic */
 .hero-h1 {
-  font-size: clamp(52px, 9vw, 108px);
+  font-size: 60px;
   font-weight: 900;
   line-height: 0.95;
-  letter-spacing: -4px;
   color: #fff;
   margin-bottom: 22px;
 }
@@ -420,7 +420,6 @@
   color: rgba(255,255,255,.72);
   line-height: 1.65;
   font-weight: 400;
-  margin-bottom: 36px;
   animation: fadeUp 0.8s ease 0.55s both;
   max-width: 540px;
 }

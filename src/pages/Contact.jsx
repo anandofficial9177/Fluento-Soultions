@@ -375,7 +375,7 @@ export default function Contact({ onNavigate, onBookClick, onDemoClick, onToast 
                     </p>
                     <div style={{ padding:14, borderRadius:10, background:'rgba(37,99,235,.05)', border:'1px solid rgba(37,99,235,.1)', marginBottom:20 }}>
                       <div style={{ fontSize:9.5, fontWeight:700, color:'var(--cyan)', marginBottom:4, letterSpacing:1 }}>EMAIL SENT TO</div>
-                      <div style={{ fontSize:12, color:'var(--g600)', fontWeight:500 }}>asish@fluentolearningsolutions.com</div>
+                      <div style={{ fontSize:12, color:'var(--g600)', fontWeight:500 }}>ashish@fluentolearningsolutions.com</div>
                     </div>
                     <button className="btn btn-primary" style={{ width:'100%', justifyContent:'center' }} onClick={resetForm}>
                       Submit Another Inquiry

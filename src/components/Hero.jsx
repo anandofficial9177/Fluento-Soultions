@@ -51,10 +51,10 @@ export default function Hero({ onContactClick, onDemoClick }) {
       <div className="hero-minimal-inner">
 
         {/* Badge */}
-        <div className="hero-badge" style={{ animation: 'fadeUp .7s ease both' }}>
+        {/* <div className="hero-badge" style={{ animation: 'fadeUp .7s ease both' }}>
           <span className="hero-badge-dot" />
           Flow into Excellence
-        </div>
+        </div> */}
 
         {/* H1 */}
         <h1 className="hero-h1">
@@ -65,8 +65,10 @@ export default function Hero({ onContactClick, onDemoClick }) {
 
         {/* One-line subtitle only */}
         <p className="hero-minimal-sub">
-          Empowering leaders, transforming organizations,<br />
-          shaping the future of work.
+          Because meaningful change,<br />
+          begins with people who learn, <br/>
+          Leaders who evolve, <br/>
+          and organizations willing to move forward.
         </p>
 
         {/* CTA buttons */}

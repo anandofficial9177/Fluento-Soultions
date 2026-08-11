@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import '../App.css'
+import logo from '../assets/FluentoLogo.png'
 
 const NAV_LINKS = [
   { id: 'home',     label: 'HOME' },
@@ -84,10 +85,10 @@ export default function Navbar({ currentPage, onNavigate, onContactClick, onDemo
 
           {/* Logo */}
           <button className="pill-logo" onClick={() => onNavigate('home')}>
-            <LogoMark size={32} />
+            <img src={logo} alt="Fluento Logo" className="logo-img" style={{ width: 50, }} />
             <div>
-              <div className="pill-logo-name">FLUENTO</div>
-              <div className="pill-logo-tag">Solutions</div>
+              <div className="pill-logo-name" style={{fontfamily:'  font-family: "Mokoto", "sans-serif"'}}>FLUENTO</div>
+              <div className="pill-logo-tag">LEARNING SOLUTIONS</div>
             </div>
           </button>
 
