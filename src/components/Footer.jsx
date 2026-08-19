@@ -3,6 +3,7 @@ import '../App.css'
 const PROGRAMS = ['Leadership Dev Lab','Executive Communication','AI Ready Workforce','Org Excellence']
 const COMPANY  = ['About Us','Our Experts','How We Work','Contact Us']
 const COMPANY_NAV = ['about','about','how','contact']
+import logoLight from '../assets/logolight.png'
 
 export default function Footer({ onNavigate, onContactClick, onDemoClick, onToast }) {
   return (
@@ -11,18 +12,8 @@ export default function Footer({ onNavigate, onContactClick, onDemoClick, onToas
 
         {/* Brand column */}
         <div>
-          <div className="footer-logo">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <rect width="22" height="22" rx="6" fill="url(#footerLogoGrad)" />
-              <defs>
-                <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="22" y2="22">
-                  <stop stopColor="#2563EB" />
-                  <stop offset="1" stopColor="#06B6D4" />
-                </linearGradient>
-              </defs>
-              <path d="M5 5h8a3.5 3.5 0 010 7H5V5z" fill="rgba(255,255,255,.9)" />
-            </svg>
-            FLUENTO
+          <div className="footer-logo" >
+          <img src={logoLight} alt="Fluento Logo" style={{ width: '156px'}}/> 
           </div>
           <p className="footer-desc">
             Corporate learning solutions building future-ready leaders and AI-powered
@@ -103,7 +94,7 @@ export default function Footer({ onNavigate, onContactClick, onDemoClick, onToas
 
       {/* Bottom bar */}
       <div className="footer-bottom">
-        <div>© 2025 FLUENTO Corporate Learning Solutions · fluentolearningsolutions.com</div>
+        <div>© 2025 FLUENTO LEARNING SOLUTIONS · fluentolearningsolutions.com</div>
         <div style={{ display: 'flex', gap: 14 }}>
           <a>Privacy</a>
           <a>Terms</a>

@@ -66,7 +66,6 @@ export default function About({ onNavigate, onBookClick }) {
           <div className="srr">
             <span className="eyebrow">OUR STORY </span>
             <h2 className="sec-h2">Learning that moves <br/>Organizations forward</h2>
-
             <p style={{ fontSize: 13, color: 'var(--g500)', lineHeight: 1.8, marginBottom: 14 }}>
               At FLUENTO Corporate Learning Solutions, we help organizations build future-ready leaders,
               strengthen communication, develop high-performing teams, and prepare their workforce for
@@ -74,16 +73,16 @@ export default function About({ onNavigate, onBookClick }) {
             </p>
             <p style={{ fontSize: 13, color: 'var(--g500)', lineHeight: 1.8, marginBottom: 18 }}>
               Through executive masterclasses, leadership consulting, coaching, and customized learning
-              solutionsssss, we don't simply deliver training — we build organizational capability that drives
+              solutions, we don't simply deliver training — we build organizational capability that drives
               measurable business results.
             </p>
 
             <div className="check-list">
               {[
-                ['CUSTMOIZED CONTEXT', '— Designed around your needs'],
-                ['PEOPLE + PERFORMANCE', '— Growth that drives outcomes'],
-                ["BUILT FOR WHAT'S NEXT", '— Ready for AI, innovation and change'],
-                ['MEASURABLE RESULTS',    '— Business impact, not just training checkboxes'],
+                ['Customized Context', '— Designed around your needs'],
+                ['People + Performance', '— Growth that drives outcomes'],
+                ["Buit For What's Next", '— Ready for AI, innovation and change'],
+                ['Measurable Results',    '— Business impact, not just training checkboxes'],
               ].map(([bold, rest]) => (
                 <div key={bold} className="check-item">
                   <div className="check-dot">

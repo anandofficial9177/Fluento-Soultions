@@ -1,12 +1,13 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import CtaBanner from '../components/CtaBanner'
 import Footer from '../components/Footer'
+import AshishImge from '../assets/ashishImage.png'
 
 const TEAM = [
   {
     name: 'Dr. Ashish Joe S S',
     role: 'Founder & Chief Learning Strategist',
-    photo: 'linear-gradient(135deg,#071A35,#2563EB)',
+    photo: AshishImge,
     bio: 'A visionary educator and leadership strategist with over a decade of expertise in communication training, organizational development, and executive coaching. A recipient of the prestigious Commonwealth SplitSite Doctoral Fellowship, he combines academic excellence with practical leadership experience to design transformative learning solutions. He has published widely and authored a book. At FLUENTO, Dr. Ashish champions the motto "Learn, Lead, Launch", helping organizations build future-ready leaders and drive sustainable success in an AI-driven world.',
     tag: 'Commonwealth Fellow · Published Author',
     number: '01'
@@ -58,6 +59,8 @@ export default function AboutPage({
 }) {
 
   const pageRef = useRef(null)
+    const [activeTeamIndex, setActiveTeamIndex] = useState(0)
+
 
   useEffect(() => {
     const root = pageRef.current
@@ -114,13 +117,11 @@ export default function AboutPage({
             Where
             <span> Excellence </span>
             Meets
-            <em> Purpose.</em>
+            <em> Purpose</em>
           </h1>
 
           <p className="about-hero-description about-reveal">
-            FLUENTO Corporate Learning Solutions is built on one
-            powerful belief — extraordinary learning creates
-            extraordinary organizations.
+            We believe learning should flow with ease-helping people grow, leaders evolve, and organizations move towards excellence
           </p>
 
           <div className="about-hero-bottom about-reveal">
@@ -129,14 +130,14 @@ export default function AboutPage({
               <span className="about-scroll-line" />
               <span>Scroll to explore</span>
             </div>
-
+{/* 
             <div className="about-hero-motto">
               LEARN
               <span>·</span>
               LEAD
               <span>·</span>
               LAUNCH
-            </div>
+            </div> */}
 
           </div>
 
@@ -159,7 +160,7 @@ export default function AboutPage({
 
           <div className="about-section-label about-reveal">
             <span>01</span>
-            OUR STORY
+            OUR MISSION
           </div>
 
           <div className="about-story-layout">
@@ -192,11 +193,23 @@ export default function AboutPage({
                 business results.
               </p>
 
-              <div className="about-highlight">
-                <span>“</span>
-                Learn. Lead. Launch.
-                <span>”</span>
-              </div>
+                  <div className="check-list">
+              {[
+                ['Customized Context', '— Designed around your needs'],
+                ['People + Performance', '— Growth that drives outcomes'],
+                ["Buit For What's Next", '— Ready for AI, innovation and change'],
+                ['Measurable Results',    '— Business impact, not just training checkboxes'],
+              ].map(([bold, rest]) => (
+                <div key={bold} className="check-item">
+                  <div className="check-dot">
+                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
+                      <path d="M1.5 4.5l2 2 4-4" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                  <div className="check-text"><strong>{bold}</strong> {rest}</div>
+                </div>
+              ))}
+            </div>
 
             </div>
 
@@ -287,129 +300,128 @@ export default function AboutPage({
       {/* =====================================================
           TEAM
       ===================================================== */}
+<div className="about-team-showcase">
 
-      <section className="about-team section">
+  {/* =========================================
+      LEFT SIDE — CONSTANT CONTENT
+  ========================================= */}
+  <div className="about-team-left">
 
-        <div className="about-team-inner">
+    <div className="about-section-label">
+      <span>03</span>
+      MEET OUR EXPERTS
+    </div>
 
-          <div className="about-section-label about-reveal">
-            <span>03</span>
-            MEET OUR EXPERTS
-          </div>
+    <h2>
+      The learning
+      <span> architects behind</span>
+      <em>FLUENTO.</em>
+    </h2>
 
-          <div className="about-team-heading">
+    {/* <p className="about-team-description">
+      Our experts bring together academic excellence,
+      practical leadership experience, and a passion
+      for transformative learning.
+    </p> */}
 
-            <div className="about-reveal">
+  </div>
 
-              <h2>
-                The learning
-                <br />
-                <span>architects</span> behind FLUENTO.
-              </h2>
 
+  {/* =========================================
+      RIGHT SIDE — ONE PERSON AT A TIME
+  ========================================= */}
+  <div className="about-team-right">
+
+    {TEAM.map((member, index) => {
+
+      if (index !== activeTeamIndex) return null
+
+      return (
+
+        <article
+          key={member.name}
+          className="about-team-single-card"
+        >
+
+          {/* IMAGE */}
+          <div
+            className="about-team-single-photo"
+            style={{
+  backgroundImage: `url(${member.photo})`
+}}
+          >
+
+            <div className="about-team-photo-grid" />
+
+            <div className="about-team-number">
+              {member.number}
             </div>
 
-            <p className="about-reveal">
-              Academic excellence meets practical leadership
-              experience. Our experts bring diverse perspectives,
-              deep industry knowledge, and a shared passion for
-              transformative learning.
+            <div className="about-team-photo-overlay" />
+
+          </div>
+
+
+          {/* PERSON DETAILS */}
+          <div className="about-team-single-body">
+
+            <div className="about-team-role">
+              {member.role}
+            </div>
+
+            <h3>
+              {member.name}
+            </h3>
+
+            <p>
+              {member.bio}
             </p>
 
-          </div>
-
-
-          <div className="about-team-grid">
-
-            {TEAM.map((member, index) => (
-
-              <article
-                key={member.name}
-                className="about-team-card about-stagger"
-                style={{
-                  transitionDelay: `${index * 140}ms`
-                }}
-              >
-
-                <div
-                  className="about-team-photo"
-                  style={{
-                    background: member.photo
-                  }}
-                >
-
-                  <div className="about-team-photo-grid" />
-
-                  <div className="about-team-number">
-                    {member.number}
-                  </div>
-
-                  <div className="about-team-avatar">
-
-                    <svg
-                      width="110"
-                      height="110"
-                      viewBox="0 0 110 110"
-                      fill="none"
-                    >
-                      <circle
-                        cx="55"
-                        cy="40"
-                        r="25"
-                        fill="rgba(255,255,255,.13)"
-                      />
-
-                      <path
-                        d="M20 105c0-20 16-36 35-36s35 16 35 36"
-                        fill="rgba(255,255,255,.10)"
-                      />
-
-                      <circle
-                        cx="55"
-                        cy="40"
-                        r="17"
-                        fill="rgba(255,255,255,.22)"
-                      />
-
-                    </svg>
-
-                  </div>
-
-                  <div className="about-team-photo-overlay" />
-
-                </div>
-
-
-                <div className="about-team-body">
-
-                  <div className="about-team-role">
-                    {member.role}
-                  </div>
-
-                  <h3>
-                    {member.name}
-                  </h3>
-
-                  <p>
-                    {member.bio}
-                  </p>
-
-                  <div className="about-team-tag">
-                    <span>✦</span>
-                    {member.tag}
-                  </div>
-
-                </div>
-
-              </article>
-
-            ))}
+            {/* <div className="about-team-tag">
+              <span>✦</span>
+              {member.tag}
+            </div> */}
 
           </div>
 
-        </div>
 
-      </section>
+          {/* NEXT BUTTON */}
+          <button
+            className="about-team-next"
+            onClick={() => {
+              setActiveTeamIndex(
+                (prev) => (prev + 1) % TEAM.length
+              )
+            }}
+            aria-label="Next team member"
+          >
+
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M9 18l6-6-6-6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+
+          </button>
+
+        </article>
+
+      )
+
+    })}
+
+  </div>
+
+</div>
 
 
       {/* =====================================================

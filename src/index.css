@@ -4,38 +4,131 @@
 ═══════════════════════════════════════ */
 
 :root {
-  /* Brand Colors */
-  --navy:    #071A35;
-  --navy2:   #0C2344;
-  --royal:   #2563EB;
-  --royal2:  #1D4ED8;
-  --royalL:  #3B82F6;
-  --cyan:    #06B6D4;
-  --cyanBr:  #00D4FF;
+  /* ═══════════════════════════════════════════════
+     FLUENTO BRAND COLORS
+     Primary: Vivid Cyan + Dark Blue
+  ═══════════════════════════════════════════════ */
 
-  /* Grays */
-  --white:   #FFFFFF;
-  --g50:     #F8FAFC;
-  --g100:    #F1F5F9;
-  --g200:    #E2E8F0;
-  --g300:    #CBD5E1;
-  --g400:    #94A3B8;
-  --g500:    #64748B;
-  --g600:    #475569;
-  --g700:    #334155;
-  --g800:    #1E293B;
+  --navy:     #1C212A;
+  --navy2:    #252B36;
 
-  /* Gradients */
-  --grad:  linear-gradient(135deg, #2563EB, #06B6D4);
-  --gradR: linear-gradient(135deg, #06B6D4, #2563EB);
+  --royal:    #01A3A1;
+  --royal2:   #008C8A;
+  --royalL:   #20B9B6;
 
-  /* Typography */
-  --font-heading: 'Plus Jakarta Sans',  system-ui;
-  --font-body:    'system-ui', system-ui,  system-ui;
+  --cyan:     #01A3A1;
+  --cyanBr:   #21D6D2;
 
-  /* Spacing */
+
+  /* ═══════════════════════════════════════════════
+     LIGHT / BACKGROUND COLORS
+  ═══════════════════════════════════════════════ */
+
+  --white:    #FFFFFF;
+
+  --g50:      #F6FBFB;
+  --g100:     #EDF7F7;
+  --g200:     #D9EAEA;
+  --g300:     #B9D1D1;
+  --g400:     #8BA5A5;
+  --g500:     #617070;
+  --g600:     #465252;
+  --g700:     #303939;
+  --g800:     #242B2B;
+
+
+  /* ═══════════════════════════════════════════════
+     GRADIENTS
+  ═══════════════════════════════════════════════ */
+
+  --grad:
+    linear-gradient(
+      135deg,
+      #01A3A1 0%,
+      #20B9B6 45%,
+      #1C212A 100%
+    );
+
+  --gradR:
+    linear-gradient(
+      135deg,
+      #1C212A 0%,
+      #008C8A 55%,
+      #01A3A1 100%
+    );
+
+  /* Clean primary gradient */
+  --grad-cyan:
+    linear-gradient(
+      135deg,
+      #01A3A1,
+      #21D6D2
+    );
+
+  /* Dark premium gradient */
+  --grad-dark:
+    linear-gradient(
+      135deg,
+      #1C212A,
+      #252B36
+    );
+
+  /* Cyan → Dark */
+  --grad-brand:
+    linear-gradient(
+      135deg,
+      #01A3A1 0%,
+      #008C8A 50%,
+      #1C212A 100%
+    );
+
+
+  /* ═══════════════════════════════════════════════
+     SOFT BRAND BACKGROUNDS
+  ═══════════════════════════════════════════════ */
+
+  --cyan-soft:      rgba(1, 163, 161, 0.08);
+  --cyan-soft-md:   rgba(1, 163, 161, 0.14);
+  --cyan-soft-lg:   rgba(1, 163, 161, 0.22);
+
+  --navy-soft:      rgba(28, 33, 42, 0.06);
+  --navy-soft-md:   rgba(28, 33, 42, 0.12);
+
+
+  /* ═══════════════════════════════════════════════
+     GLOW / SHADOW COLORS
+  ═══════════════════════════════════════════════ */
+
+  --cyan-glow:
+    0 0 30px rgba(1, 163, 161, 0.30);
+
+  --cyan-glow-lg:
+    0 0 60px rgba(1, 163, 161, 0.35);
+
+  --shadow-sm:
+    0 4px 16px rgba(28, 33, 42, 0.08);
+
+  --shadow-md:
+    0 12px 35px rgba(28, 33, 42, 0.12);
+
+  --shadow-lg:
+    0 24px 60px rgba(28, 33, 42, 0.16);
+
+
+  /* ═══════════════════════════════════════════════
+     TYPOGRAPHY
+  ═══════════════════════════════════════════════ */
+
+  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+
+
+  /* ═══════════════════════════════════════════════
+     SPACING
+  ═══════════════════════════════════════════════ */
+
   --section-py: 88px;
-  --inner-max:  1060px;
+  --inner-max: 1060px;
 }
 
 /* ── Reset ── */
@@ -56,8 +149,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+}
+h2{
+  font-family: "Horizon", "sans-serif" !important;
+
 }
 
 img, svg { display: block; }
@@ -166,7 +263,7 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 .eyebrow {
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--cyan);
   letter-spacing: 3px;
@@ -177,7 +274,8 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 .sec-h2 {
-  font-size: clamp(26px, 4vw, 42px);
+  font-family: "Horizon", "sans-serif" !important;
+  font-size: 22px;
   font-weight: 800;
   color: var(--navy);
   line-height: 1.12;
@@ -223,12 +321,15 @@ button { cursor: pointer; font-family: inherit; }
 
 .btn-primary {
   background: var(--grad);
-  color: #fff;
+  color: White;
   box-shadow: 0 0 24px rgba(37, 99, 235, 0.4);
+    font-family: "Recursive", "sans-serif" !important;
+
 }
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 40px rgba(37, 99, 235, 0.6);
+  border-color: rgba(83, 235, 37, 0.5) !important;
 }
 
 .btn-ghost {
@@ -317,6 +418,22 @@ button { cursor: pointer; font-family: inherit; }
 @font-face {
   font-family: "Mental";
   src: url("./assets/fonts/Fontspring-DEMO-mental_thin.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-weight: bolder;
+}
+@font-face {
+  font-family: "Horizon";
+  src: url("./assets/fonts/Horizon.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-weight: bolder;
+}
+@font-face {
+  font-family: "Recursive";
+  src: url("./assets/fonts/Recursive-VariableFont_CASL\,CRSV\,MONO\,slnt\,wght.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
