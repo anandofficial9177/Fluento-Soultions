@@ -160,7 +160,8 @@
 .section{
   background:floralwhite !important;
   padding:10px 10px 24px 10px !important;
-  height:100vh !important;
+ min-height: 100vh;
+height: auto;
 }
 .video-showcase{
   background:floralwhite !important;
@@ -5919,9 +5920,9 @@ mask-image: linear-gradient(
    ========================================================= */
 
 .about-hero {
-  min-height: 720px;
-  height: min(88vh, 900px);
-
+  padding: 2%;
+min-height: 100vh;
+height: auto;
   position: relative;
   overflow: hidden;
 
@@ -6274,6 +6275,7 @@ color: #fff;}
 ========================================================= */
 
 .about-team-showcase {
+  padding: 2%;
   position: relative;
   /* width: min(1240px, calc(100% - 48px)); */
     width: min(1500px, calc(100% - 80px));
@@ -6285,7 +6287,7 @@ color: #fff;}
   grid-template-columns: 0.95fr 1.05fr;
   gap: 8%;
 
-  align-items: center;
+  /* align-items: center; */
 
   isolation: isolate;
 }

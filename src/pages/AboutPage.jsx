@@ -315,7 +315,7 @@ export default function AboutPage({
     <h2>
       The learning
       <span> architects behind</span>
-      <em>FLUENTO.</em>
+      <em>FLUENTO</em>
     </h2>
 
     {/* <p className="about-team-description">
