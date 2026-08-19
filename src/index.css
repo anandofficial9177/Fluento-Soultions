@@ -15,7 +15,6 @@
   --royal:    #01A3A1;
   --royal2:   #008C8A;
   --royalL:   #20B9B6;
-
   --cyan:     #01A3A1;
   --cyanBr:   #21D6D2;
 
@@ -275,11 +274,11 @@ button { cursor: pointer; font-family: inherit; }
 
 .sec-h2 {
   font-family: "Horizon", "sans-serif" !important;
-  font-size: 22px;
+  font-size: 33px;
   font-weight: 800;
   color: var(--navy);
   line-height: 1.12;
-  letter-spacing: -1px;
+  letter-spacing: 2px;
   margin-bottom: 12px;
 }
 

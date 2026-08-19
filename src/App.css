@@ -15,7 +15,7 @@
 /* ── Spacer that compensates for fixed positioning ── */
 .navbar-spacer { height: 76px; }
 
-/* ═══════════════════════════════
+/* ═══════════════════════════════ Al All capital, But first letter is wrong. something Which one? Oh, Oh, he And now once check the one once, Sorry, once again, refresh the page and check and once check I think it's a good idea to have a little bit of a buffer.
    PILL NAVBAR — outer wrapper
 ═══════════════════════════════ */
 .navbar-pill-outer {
@@ -161,7 +161,7 @@
   background:floralwhite !important;
   padding:10px 10px 24px 10px !important;
  /* min-height: 100vh; */
- height: 100vh; 
+ /* height: 100vh;  */
 }
 .video-showcase{
   background:floralwhite !important;
@@ -4663,8 +4663,8 @@ p{
   z-index: 1;
 }
 .journey-step:hover .journey-step-num { border-color: transparent; box-shadow: 0 0 22px rgba(37,99,235,.35); }
-.journey-step-name {font-family: "Recursive", "sans-serif" !important; font-size: 10.5px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-.journey-step-desc { font-size: 9.5px; color: var(--g400); line-height: 1.4;font-family: "Recursive", "sans-serif" !important; }
+.journey-step-name {font-family: "Recursive", "sans-serif" !important; font-size: 26.5px; font-weight: bold; color: var(--navy); margin-bottom: 4px; font-variant: all-petite-caps; }
+.journey-step-desc {  color: black; line-height: 1.4;font-family: "Recursive", "sans-serif" !important; }
 
 /* ── INDUSTRIES ── */
 .industries-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; }
