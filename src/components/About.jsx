@@ -27,7 +27,7 @@ export default function About({ onNavigate, onBookClick }) {
               <svg width="250" height="200" viewBox="0 0 250 200" fill="none">
                 <defs>
                   <linearGradient id="aboutGrad" x1="0" y1="0" x2="250" y2="200" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#2563EB" />
+                    <stop stopColor="#01a3a1" />
                     <stop offset="1" stopColor="#06B6D4" />
                   </linearGradient>
                 </defs>
@@ -64,20 +64,14 @@ export default function About({ onNavigate, onBookClick }) {
 
           {/* ── Right: Content ── */}
           <div className="srr">
-            <span className="eyebrow">OUR STORY </span>
-            <h2 className="sec-h2">Learning that moves <br/>Organizations forward</h2>
+            <span className="eyebrow" style={{fontSize:"16px"}}>OUR STORY </span>
+            {/* <h2 className="sec-h2">Learning that moves <br/>Organizations forward</h2> */}
             <p style={{ fontSize: 13, color: 'var(--g500)', lineHeight: 1.8, marginBottom: 14 }}>
-              At FLUENTO Corporate Learning Solutions, we help organizations build future-ready leaders,
-              strengthen communication, develop high-performing teams, and prepare their workforce for
-              the challenges of an AI-driven world.
+              FLUENTO began with simple conversations over coffee—with friends and family working in the corporate world, sharing the everyday challenges they faced. From presentations that lacked confidence to ineffective knowledge transfers, routine online meetings, communication gaps, and growing uncertainty around AI, the same concerns kept surfacing. Leadership and team dynamics were often overlooked, while training remained generic, technical, and sometimes painfully dull. We saw a need for something different: learning shaped around real needs, delivered by experienced professionals, and made practical, engaging, and organic. That spark became FLUENTO—a journey to help people and organizations flow into excellence.
             </p>
-            <p style={{ fontSize: 13, color: 'var(--g500)', lineHeight: 1.8, marginBottom: 18 }}>
-              Through executive masterclasses, leadership consulting, coaching, and customized learning
-              solutions, we don't simply deliver training — we build organizational capability that drives
-              measurable business results.
-            </p>
+   
 
-            <div className="check-list">
+            {/* <div className="check-list">
               {[
                 ['Customized Context', '— Designed around your needs'],
                 ['People + Performance', '— Growth that drives outcomes'],
@@ -87,17 +81,17 @@ export default function About({ onNavigate, onBookClick }) {
                 <div key={bold} className="check-item">
                   <div className="check-dot">
                     <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
-                      <path d="M1.5 4.5l2 2 4-4" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" />
+                      <path d="M1.5 4.5l2 2 4-4" stroke="#01a3a1" strokeWidth="1.5" strokeLinecap="round" />
                     </svg>
                   </div>
                   <div className="check-text"><strong>{bold}</strong> {rest}</div>
                 </div>
               ))}
-            </div>
+            </div> */}
 
-            <button className="btn btn-primary" onClick={() => onNavigate('about')}>
+            {/* <button className="btn btn-primary" onClick={() => onNavigate('about')}>
               MORE ABOUT US →
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

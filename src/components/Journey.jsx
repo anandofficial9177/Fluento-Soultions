@@ -47,7 +47,7 @@ export default function Journey({ onNavigate }) {
                 onClick={() => onNavigate('how')}>
                 <div className="journey-step-num"
                   style={step.active ? {
-                    background: 'linear-gradient(135deg,#2563EB,#06B6D4)',
+                    background: 'linear-gradient(135deg,#01a3a1,#06B6D4)',
                     borderColor: 'transparent',
                   } : {}}>
                   {step.icon}

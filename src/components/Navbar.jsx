@@ -153,7 +153,7 @@ export default function Navbar({
           y2="32"
         >
 
-          <stop stopColor="#2563EB" />
+          <stop stopColor="#01a3a1" />
           <stop offset="1" stopColor="#06B6D4" />
 
         </linearGradient>

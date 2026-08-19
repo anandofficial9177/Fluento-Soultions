@@ -448,7 +448,7 @@ export default function Contact({
                     </div>
 
                     <div className="contact-detail-value">
-                      ashish@fluentolearningsolutions.com
+                      @fluentolearningsolutions.com
                     </div>
                   </div>
                 </div>
@@ -548,7 +548,7 @@ export default function Contact({
                           fontWeight: 500,
                         }}
                       >
-                        ashish@fluentolearningsolutions.com
+                        @fluentolearningsolutions.com
                       </div>
                     </div>
 

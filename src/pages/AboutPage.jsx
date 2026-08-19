@@ -15,7 +15,7 @@ const TEAM = [
   {
     name: 'Subhashree S',
     role: 'Principal Leadership Consultant',
-    photo: 'linear-gradient(135deg,#0C2344,#2563EB)',
+    photo: 'linear-gradient(135deg,#0C2344,#01a3a1)',
     bio: 'With over 12 years of global IT consulting experience, Subhashree brings deep expertise in the oil and gas sector, having worked with leading clients such as Total Petroleum, Shell, and Chevron. A Project Management Professional (PMP) certified consultant with specialized skills in SAP ISOIL, SAP SD, SAP S/4 HANA, SAP TM, and SAP Signavio. Her background combines technical mastery with business management acumen, enabling her to design learning solutions that bridge technology, strategy, and leadership.',
     tag: 'PMP Certified · SAP Expert · Shell · Total · Chevron',
     number: '02'
@@ -23,7 +23,7 @@ const TEAM = [
   {
     name: 'Dr. Ashams Joe S S',
     role: 'Instructional Design Consultant',
-    photo: 'linear-gradient(135deg,#06B6D4,#2563EB)',
+    photo: 'linear-gradient(135deg,#06B6D4,#01a3a1)',
     bio: 'Dr. Ashams Joe holds a PhD in Linguistics and Phonetics from the English and Foreign Language University. With over seven years of experience in B2B content strategy, curriculum design, and corporate communication, he has worked across industries to craft impactful training content and learning frameworks. At FLUENTO, he connects academic expertise with corporate training needs — ensuring programs are well-designed and aligned with organizational goals.',
     tag: 'PhD Linguistics · EFL University · B2B Curriculum Expert',
     number: '03'
@@ -203,7 +203,7 @@ export default function AboutPage({
                 <div key={bold} className="check-item">
                   <div className="check-dot">
                     <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
-                      <path d="M1.5 4.5l2 2 4-4" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" />
+                      <path d="M1.5 4.5l2 2 4-4" stroke="#01a3a1" strokeWidth="1.5" strokeLinecap="round" />
                     </svg>
                   </div>
                   <div className="check-text"><strong>{bold}</strong> {rest}</div>

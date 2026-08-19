@@ -126,7 +126,7 @@ export default function VideoModal({ onClose }) {
               <rect width="20" height="20" rx="5" fill="url(#fsLogoGrad)"/>
               <defs>
                 <linearGradient id="fsLogoGrad" x1="0" y1="0" x2="20" y2="20">
-                  <stop stopColor="#2563EB"/><stop offset="1" stopColor="#06B6D4"/>
+                  <stop stopColor="#01a3a1"/><stop offset="1" stopColor="#06B6D4"/>
                 </linearGradient>
               </defs>
               <path d="M4 4h7a3 3 0 010 6H4V4z" fill="rgba(255,255,255,.9)"/>

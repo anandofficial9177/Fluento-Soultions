@@ -5,19 +5,19 @@ const TESTIMONIALS = [
     text: "FLUENTO's Leadership Development Lab transformed how our senior team approaches strategy. Productivity improved and board communication reached an entirely new level. The ROI was measurable within 60 days.",
     initials: 'RK', name: 'Rajesh Kumar', role: 'CHRO, TechCorp India',
     company: 'TECHCORP INDIA',
-    avatarGrad: 'linear-gradient(135deg,#2563EB,#06B6D4)',
+    avatarGrad: 'linear-gradient(135deg,#01a3a1,#06B6D4)',
   },
   {
     text: "The AI Ready Workforce program was exceptional. Our teams went from resistant to enthusiastic about AI tools in just 3 days. Productivity metrics improved 34% in Q1. FLUENTO made it purposeful, not overwhelming.",
     initials: 'SP', name: 'Sunita Patel', role: 'CEO, FinServe Group',
     company: 'FINSERVE GROUP',
-    avatarGrad: 'linear-gradient(135deg,#7C3AED,#2563EB)',
+    avatarGrad: 'linear-gradient(135deg,#7C3AED,#01a3a1)',
   },
   {
     text: "Dr. Ashish and the FLUENTO team brought world-class L&D to our organization. This isn't corporate training — it's business transformation through learning. The customization sets them apart completely.",
     initials: 'AM', name: 'Arun Mehta', role: 'VP Learning, MNC Corp',
     company: 'MNC CORP',
-    avatarGrad: 'linear-gradient(135deg,#06B6D4,#2563EB)',
+    avatarGrad: 'linear-gradient(135deg,#06B6D4,#01a3a1)',
   },
 ]
 
