@@ -64,9 +64,9 @@ export default function About({ onNavigate, onBookClick }) {
 
           {/* ── Right: Content ── */}
           <div className="srr">
-            <span className="eyebrow" style={{fontSize:"16px"}}>OUR STORY </span>
+            <span className="eyebrow" style={{fontSize:"20px"}}>OUR STORY </span>
             {/* <h2 className="sec-h2">Learning that moves <br/>Organizations forward</h2> */}
-            <p style={{ fontSize: 13, color: 'var(--g500)', lineHeight: 1.8, marginBottom: 14 }}>
+            <p style={{ fontSize: 20, color: 'var(--g500)', lineHeight: 1.8, marginBottom: 14 }}>
               FLUENTO began with simple conversations over coffee—with friends and family working in the corporate world, sharing the everyday challenges they faced. From presentations that lacked confidence to ineffective knowledge transfers, routine online meetings, communication gaps, and growing uncertainty around AI, the same concerns kept surfacing. Leadership and team dynamics were often overlooked, while training remained generic, technical, and sometimes painfully dull. We saw a need for something different: learning shaped around real needs, delivered by experienced professionals, and made practical, engaging, and organic. That spark became FLUENTO—a journey to help people and organizations flow into excellence.
             </p>
    

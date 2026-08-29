@@ -93,7 +93,7 @@ export default function Footer({ onNavigate, onContactClick, onDemoClick, onToas
 
       {/* Bottom bar */}
       <div className="footer-bottom">
-        <div>© 2025 FLUENTO LEARNING SOLUTIONS · fluentolearningsolutions.com</div>
+        <div>© 2026 FLUENTO LEARNING SOLUTIONS · fluentolearningsolutions.com</div>
         <div style={{ display: 'flex', gap: 14 }}>
           <a>Privacy</a>
           <a>Terms</a>

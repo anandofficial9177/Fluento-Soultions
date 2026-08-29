@@ -2,8 +2,11 @@ import { useEffect, useRef, useState } from 'react'
 import CtaBanner from '../components/CtaBanner'
 import Footer from '../components/Footer'
 import AshishImge from '../assets/ashishImage.png'
-import ShreeImage from '../assets/shree2.jpeg'
-import AshamsImage from '../assets/Ashams1.jpeg'
+import ShreeImage from '../assets/ShreeImage.png'
+import AshamsImage from '../assets/AshamsImage.png'
+import commitmentBg from '../assets/commitmentbg.png'
+import learningBg from '../assets/learningbg.png'
+import purposeBg from '../assets/purposebg.png'
 
 
 const TEAM = [
@@ -36,21 +39,24 @@ const TEAM = [
 const VALUES = [
   {
     number: '01',
-    title: 'Mission',
-    text: 'Build future-ready leaders through world-class learning.',
-    icon: '◎'
+    title: 'COMMITMENT TO IMPACT',
+    text: 'Training the leads to tangible results.',
+    icon: '◎',
+    bg: commitmentBg
   },
   {
     number: '02',
-    title: 'Vision',
-    text: "Asia's most trusted corporate learning partner.",
-    icon: '◌'
+    title: 'LEARNING THAT FLOWS',
+    text: "Making learning Organic, engaging and effortless.",
+    icon: '◌',
+    bg: learningBg 
   },
   {
     number: '03',
-    title: 'Motto',
-    text: 'Learn. Lead. Launch.',
-    icon: '✦'
+    title: 'PURPOSE BEFORE PROGRAM',
+    text: 'Design around people, needs and contect not pre-packaged programs',
+    icon: '✦',
+    bg: purposeBg
   }
 ]
 
@@ -241,15 +247,15 @@ export default function AboutPage({
           <div className="about-values-header about-reveal">
 
             <h2>
-              Purpose is our
-              <span> foundation.</span>
+              CORE VALUES
+              {/* <span> foundation.</span> */}
             </h2>
 
-            <p>
+            {/* <p>
               Everything we design begins with a clear purpose:
               helping people and organizations become better versions
               of themselves.
-            </p>
+            </p> */}
 
           </div>
 
@@ -261,6 +267,13 @@ export default function AboutPage({
                 key={value.title}
                 className="about-value-card about-stagger"
                 style={{
+                    backgroundImage: `linear-gradient(
+      180deg,
+      rgba(2, 10, 15, 0.15),
+      rgba(2, 10, 15, 0.82)
+    ), url(${value.bg})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
                   transitionDelay: `${index * 120}ms`
                 }}
               >
