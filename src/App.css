@@ -7718,7 +7718,7 @@ color: #fff;}
 
 
 .about-values-grid {
-      height: 600px;
+      /* height: 600px; */
   display: grid;
 
   grid-template-columns:
@@ -10662,7 +10662,7 @@ border-color:
 
   font-family: var(--font-heading);
 
-  font-size: clamp(30px, 3vw, 44px);
+  font-size: clamp(30px, 2vw, 44px);
   line-height: 1.05;
 
   font-weight: 800;
@@ -13176,7 +13176,7 @@ h3 {
 @media (max-height: 700px) and (min-width: 900px) {
 
   .hero-h1 {
-    font-size:      clamp(26px, 7vh, 50px) !important;
+    font-size:      clamp(26px, 11vh, 66px) !important;
     letter-spacing: -2px !important;
   }
 
@@ -13685,7 +13685,7 @@ h3 {
   .video-thumb { height: 64vh !important; }
 
   /* ── Programs ── */
-  .programs-section { padding-top: 4vh !important; padding-bottom: 3vh !important; }
+  .programs-section { padding-top: 8vh !important; padding-bottom: 3vh !important; }
   .programs-heading { margin-bottom: 2.5vh !important; }
   .program-card     { min-height: 38vh !important; }
 
@@ -13696,7 +13696,7 @@ h3 {
   .cta-banner { padding: 3vh 4vw !important; }
 
   /* ── Page heroes ── */
-  .page-hero { padding: 3vh 4vw 2vh !important; }
+  .page-hero { padding: 14vh 4vw 12vh !important; }
 
   /* ── Footer ── */
   .footer { padding: 2.5vh 4vw 1.5vh !important; }
