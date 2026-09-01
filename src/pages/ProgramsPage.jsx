@@ -567,9 +567,9 @@
 
                       {/* Description */}
 
-                      <p>
+                      {/* <p>
                         {program.desc}
-                      </p>
+                      </p> */}
 
 
                       {/* Tags */}

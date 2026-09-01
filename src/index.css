@@ -158,7 +158,7 @@ html { scroll-behavior: smooth; }
 body {
   font-family: "Recursive", sans-serif;
   background: var(--white);
-  color: var(--g800);
+  color: black;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -307,7 +307,7 @@ button { cursor: pointer; font-family: inherit; }
   gap:           7px;
   padding:       clamp(10px, 1.3vh, 16px) clamp(18px, 2vw, 30px);
   border-radius: 8px;
-  font-size:     clamp(12px, min(0.9vw, 1.7vh), 15px);
+  font-size:     clamp(12px, min(1.9vw, 3.7vh), 22px);
   font-weight:   700;
   border:        none;
   font-family:   var(--font-heading);

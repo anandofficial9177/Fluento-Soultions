@@ -193,7 +193,7 @@ font-family: "Recursive", "sans-serif" !important;
   background: var(--grad);
   color: white;
   border: none;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 700;
 font-family: "Recursive", "sans-serif" !important;
 white-space: nowrap;
@@ -1297,7 +1297,7 @@ p{
   background: rgba(255,255,255,.1);
   border: 1.5px solid rgba(255,255,255,.22);
   color: #fff;
-  font-size: 13px;
+  font-size: 20px;
   font-weight: 600;
   font-family: "Recursive", "sans-serif" !important;
   cursor: pointer;
@@ -1861,7 +1861,7 @@ p{
     ),
     #1C212A;
 
-  padding: 110px 0 0;
+  /* padding: 110px 0 0; */
 }
 
 
@@ -5022,7 +5022,7 @@ mask-image: linear-gradient(
 
   grid-template-columns:
     minmax(0, 1.55fr)
-    minmax(380px, .75fr);
+    minmax(380px, 1.75fr);
 
   gap: 65px;
 
@@ -6088,7 +6088,7 @@ color: #fff;}
 
   margin-bottom: 28px;
 
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 800;
 
   letter-spacing: 3px;
@@ -6114,7 +6114,7 @@ color: #fff;}
 
   font-size: clamp(
     58px,
-    8vw,
+    6vw,
     116px
   );
 
@@ -6293,7 +6293,7 @@ color: #fff;}
   padding: 2%;
   position: relative;
   /* width: min(1240px, calc(100% - 48px)); */
-    width: min(1500px, calc(100% - 80px));
+    /* width: min(1500px, calc(100% - 80px)); */
 
   margin: 0 auto;
 
@@ -6530,7 +6530,7 @@ color: #fff;}
 
   font-size: clamp(
     52px,
-    5.7vw,
+    4.7vw,
     82px
   );
 
@@ -8408,7 +8408,7 @@ color: #fff;}
       76px
     );
 
-  line-height: .98;
+  /* line-height: .98; */
 
   letter-spacing: -3px;
 
@@ -8539,10 +8539,7 @@ color: #fff;}
 .how-section {
   position: relative;
 
-  /* padding:
-    110px 24px
-    120px; */
-
+  padding: 66px 0px 0px;
   background:
     linear-gradient(
       180deg,
@@ -8586,15 +8583,11 @@ color: #fff;}
    ========================================================= */
 
 .how-section-header {
-  justify-self: center;
   position: relative;
   z-index: 2;
   max-width: 700px;
-
-  /* margin:
-    0 auto
-    90px; */
-
+  width: 100%;
+  margin: 0 auto 90px;
   text-align: center;
 }
 
@@ -8602,12 +8595,12 @@ color: #fff;}
 .how-section-eyebrow {
   color: #01a3a1;
 
-  font-size: 10px;
+  font-family: 'Recursive';
+  font-size: 27px;
 
   font-weight: 800;
 
-  letter-spacing: 3px;
-}
+  }
 
 
 .how-section-header h2 {
@@ -8854,6 +8847,7 @@ border-color:
    ========================================================= */
 
 .how-stage-card {
+  margin: 4%;
   position: relative;
 
   width: 100%;
@@ -8905,6 +8899,7 @@ border-color:
 
 
 .how-stage:hover .how-stage-card {
+  margin: 4%;
   transform:
     translateY(-7px);
 
@@ -12595,8 +12590,8 @@ font-family: "Recursive", "sans-serif" !important;
 .stats-section,
 .testimonials-section,
 .video-stories-section,
-.why-section,
-.programs-section {
+.why-section
+ {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -12861,7 +12856,7 @@ p {
 .programs-section {
   min-height: 100vh !important;
   padding-top:    clamp(80px, 10vh, 160px) !important;
-  padding-bottom: clamp(60px, 8vh, 120px) !important;
+  /* padding-bottom: clamp(60px, 8vh, 120px) !important; */
 }
 
 @media (min-width: 1400px) {
@@ -12911,21 +12906,25 @@ p {
 /* ─────────────────────────────────────────────────────────────
    FIX ⑬  FOOTER — padding scales, doesn't shrink on large screens
 ───────────────────────────────────────────────────────────────*/
-.footer {
+/* .footer {
   padding: clamp(40px, 6vh, 80px) clamp(24px, 5vw, 80px) clamp(20px, 3vh, 40px) !important;
-}
+} */
 
 .footer-grid {
-  max-width: min(1160px, 92vw) !important;
+  /* max-width: min(1160px, 92vw) !important; */
   gap: clamp(24px, 3vw, 52px) !important;
 }
 
 @media (min-width: 1400px) {
-  .footer-grid { max-width: min(1380px, 90vw) !important; }
+  .footer-grid {
+     /* max-width: min(1380px, 90vw) !important; */
+     }
 }
 
 @media (min-width: 1800px) {
-  .footer-grid { max-width: min(1640px, 88vw) !important; }
+  .footer-grid {
+     /* max-width: min(1640px, 88vw) !important;  */
+    }
 }
 
 
@@ -12977,7 +12976,7 @@ p {
    New:  clamp(32px, min(5.0vw, 8.0vh), 100px) → 47px  ✓
 ──────────────────────────────────────────────────────────── */
 .hero-h1 {
-  font-size:      clamp(32px, min(5.0vw, 8.0vh), 100px) !important;
+  font-size:      clamp(32px, min(7vw, 13vh), 100px) !important;
   line-height:    0.92 !important;
   letter-spacing: clamp(-1.5px, min(-0.2vw, -0.3vh), -4px) !important;
 }
@@ -13001,7 +13000,7 @@ p {
    At 1280×585: min(12.8, 11.7) = 11.7 → floored to 13px ✓
 ──────────────────────────────────────────────────────────── */
 p {
-  font-size:   clamp(13px, min(1.0vw, 2.0vh), 18px) !important;
+  font-size:   clamp(13px, min(2vw, 7vh), 22px) !important;
   line-height: 1.75 !important;
 }
 
@@ -13010,7 +13009,7 @@ p {
    4. HERO SUBTITLE
 ──────────────────────────────────────────────────────────── */
 .hero-minimal-sub {
-  font-size:  clamp(13px, min(1.2vw, 2.2vh), 20px) !important;
+  font-size:  clamp(8px, min(2.2vw, 3.2vh), 26px)  !important;
   max-width:  min(640px, 80vw) !important;
   line-height: 1.68 !important;
 }
@@ -13035,7 +13034,7 @@ p {
 ──────────────────────────────────────────────────────────── */
 .eyebrow,
 .programs-eyebrow {
-  font-size:      clamp(10px, min(0.75vw, 1.4vh), 14px) !important;
+  font-size:     clamp(10px, min(1.75vw, 2.4vh), 20px) !important;
   letter-spacing: clamp(2px, min(0.2vw, 0.35vh), 4px) !important;
 }
 
@@ -13379,7 +13378,9 @@ h3 {
 }
 
 .about-illustration {
-  min-height: clamp(200px, 30vh, 420px) !important;
+  height: 70vh;
+    width: 50vw;
+  /* min-height: clamp(200px, 30vh, 420px) !important; */
   padding:    clamp(16px, 2.5vw, 32px) !important;
 }
 
@@ -13406,7 +13407,7 @@ h3 {
 .video-player { max-width: min(1060px, 94vw) !important; }
 
 .video-thumb {
-  height: clamp(180px, 30vh, 360px) !important;
+  height: clamp(185px, 60vh, 490px) !important;
 }
 
 
@@ -13416,7 +13417,7 @@ h3 {
 ───────────────────────────────────────────────────────────────*/
 .programs-section {
   padding-top:    clamp(40px, 7vh, 110px) !important;
-  padding-bottom: clamp(30px, 5vh, 80px) !important;
+  /* padding-bottom: clamp(30px, 5vh, 80px) !important; */
   min-height:     100vh !important;
 }
 
@@ -13591,12 +13592,12 @@ h3 {
    ⑱ FOOTER
    Had padding: 52px 28px 26px
 ───────────────────────────────────────────────────────────────*/
-.footer {
+/* .footer {
   padding: clamp(28px, 5vh, 52px) clamp(16px, 3vw, 36px) clamp(14px, 2.5vh, 26px) !important;
-}
+} */
 
 .footer-grid {
-  max-width:     min(1060px, 92vw) !important;
+  /* max-width:     min(1060px, 92vw) !important; */
   gap:           clamp(20px, 3vw, 40px) !important;
   margin-bottom: clamp(16px, 3vh, 32px) !important;
 }
@@ -13685,7 +13686,8 @@ h3 {
   .video-thumb { height: 64vh !important; }
 
   /* ── Programs ── */
-  .programs-section { padding-top: 8vh !important; padding-bottom: 3vh !important; }
+  .programs-section { padding-top: 8vh !important;
+     padding-bottom: 3vh !important; }
   .programs-heading { margin-bottom: 2.5vh !important; }
   .program-card     { min-height: 38vh !important; }
 
@@ -13700,7 +13702,9 @@ h3 {
 
   /* ── Footer ── */
   .footer { padding: 2.5vh 4vw 1.5vh !important; }
-  .footer-grid { margin-bottom: 1.5vh !important; gap: 2vw !important; }
+  .footer-grid {
+     /* margin-bottom: 1.5vh !important; */
+      gap: 2vw !important; }
 }
 
 
