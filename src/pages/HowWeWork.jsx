@@ -406,8 +406,7 @@ export default function HowWeWork({
         onDemoClick={onDemoClick}
       />
 
-
-      <Footer
+   <Footer
         onNavigate={onNavigate}
         onContactClick={onContactClick}
         onDemoClick={onDemoClick}

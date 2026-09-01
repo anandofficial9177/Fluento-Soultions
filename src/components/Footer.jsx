@@ -15,9 +15,7 @@ export default function Footer({ onNavigate, onContactClick, onDemoClick, onToas
           <div className="footer-logo" >
           <img src={logoLight} alt="Fluento Logo" style={{ width: '156px'}}/> 
           </div>
-          <p className="footer-desc"> All capital, But first letter is wrong. something Which one? Oh, Oh, he I, I know once, check the one, one.            Building future-ready leaders and AI-powered
-            workforces across the globe.
-          </p>
+       
 
           {/* Socials */}
           <div className="footer-socials">

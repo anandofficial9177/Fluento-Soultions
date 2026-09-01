@@ -180,7 +180,7 @@ export default function AboutPage({
                 Learning that
                 <span> moves </span>
                 organizations
-                <em> forward.</em>
+                <em> forward</em>
               </h2>
 
             </div>

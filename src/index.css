@@ -1,28 +1,69 @@
-/* ═══════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════
    FLUENTO — CSS Variables & Global Reset
    fluentolearningsolutions.com
-═══════════════════════════════════════ */
+
+   FLUID FONT SYSTEM — uses min(vw, vh) in every clamp()
+   This prevents fonts from becoming oversized on wide-but-short
+   screens like 1280×585 (laptop landscape, external monitors).
+
+   Why min(vw, vh)?
+   • vw-only: scales with WIDTH  → 83px H1 on 1280px wide screen
+   • vh-only: scales with HEIGHT → too small on tall screens
+   • min(vw,vh): picks SMALLER → balanced on any aspect ratio
+═══════════════════════════════════════════════════════════════ */
+
+
+/* ══════════════════════════════════════════════════════════════
+   CUSTOM FONTS
+══════════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: "Mokoto";
+  src: url("./assets/fonts/Mokoto Demo.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mental";
+  src: url("./assets/fonts/Fontspring-DEMO-mental_thin.otf") format("opentype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Horizon";
+  src: url("./assets/fonts/Horizon.otf") format("opentype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Recursive";
+  src: url("./assets/fonts/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   CSS CUSTOM PROPERTIES
+══════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ═══════════════════════════════════════════════
-     FLUENTO BRAND COLORS
-     Primary: Vivid Cyan + Dark Blue
-  ═══════════════════════════════════════════════ */
 
+  /* ── BRAND COLORS ───────────────────────────────────────── */
   --navy:     #1C212A;
   --navy2:    #252B36;
-
   --royal:    #01A3A1;
   --royal2:   #008C8A;
   --royalL:   #20B9B6;
   --cyan:     #01A3A1;
   --cyanBr:   #21D6D2;
-
-
-  /* ═══════════════════════════════════════════════
-     LIGHT / BACKGROUND COLORS
-  ═══════════════════════════════════════════════ */
-
   --white:    #FFFFFF;
 
   --g50:      #F6FBFB;
@@ -35,102 +76,77 @@
   --g700:     #303939;
   --g800:     #242B2B;
 
+  /* ── GRADIENTS ──────────────────────────────────────────── */
+  --grad:       linear-gradient(135deg, #01A3A1 0%, #20B9B6 45%, #1C212A 100%);
+  --gradR:      linear-gradient(135deg, #1C212A 0%, #008C8A 55%, #01A3A1 100%);
+  --grad-cyan:  linear-gradient(135deg, #01A3A1, #21D6D2);
+  --grad-dark:  linear-gradient(135deg, #1C212A, #252B36);
+  --grad-brand: linear-gradient(135deg, #01A3A1 0%, #008C8A 50%, #1C212A 100%);
 
-  /* ═══════════════════════════════════════════════
-     GRADIENTS
-  ═══════════════════════════════════════════════ */
+  /* ── SOFT BACKGROUNDS ───────────────────────────────────── */
+  --cyan-soft:    rgba(1, 163, 161, 0.08);
+  --cyan-soft-md: rgba(1, 163, 161, 0.14);
+  --cyan-soft-lg: rgba(1, 163, 161, 0.22);
+  --navy-soft:    rgba(28, 33, 42, 0.06);
+  --navy-soft-md: rgba(28, 33, 42, 0.12);
 
-  --grad:
-    linear-gradient(
-      135deg,
-      #01A3A1 0%,
-      #20B9B6 45%,
-      #1C212A 100%
-    );
+  /* ── GLOW / SHADOW ──────────────────────────────────────── */
+  --cyan-glow:    0 0 30px rgba(1, 163, 161, 0.30);
+  --cyan-glow-lg: 0 0 60px rgba(1, 163, 161, 0.35);
+  --shadow-sm:    0  4px 16px rgba(28, 33, 42, 0.08);
+  --shadow-md:    0 12px 35px rgba(28, 33, 42, 0.12);
+  --shadow-lg:    0 24px 60px rgba(28, 33, 42, 0.16);
 
-  --gradR:
-    linear-gradient(
-      135deg,
-      #1C212A 0%,
-      #008C8A 55%,
-      #01A3A1 100%
-    );
-
-  /* Clean primary gradient */
-  --grad-cyan:
-    linear-gradient(
-      135deg,
-      #01A3A1,
-      #21D6D2
-    );
-
-  /* Dark premium gradient */
-  --grad-dark:
-    linear-gradient(
-      135deg,
-      #1C212A,
-      #252B36
-    );
-
-  /* Cyan → Dark */
-  --grad-brand:
-    linear-gradient(
-      135deg,
-      #01A3A1 0%,
-      #008C8A 50%,
-      #1C212A 100%
-    );
-
-
-  /* ═══════════════════════════════════════════════
-     SOFT BRAND BACKGROUNDS
-  ═══════════════════════════════════════════════ */
-
-  --cyan-soft:      rgba(1, 163, 161, 0.08);
-  --cyan-soft-md:   rgba(1, 163, 161, 0.14);
-  --cyan-soft-lg:   rgba(1, 163, 161, 0.22);
-
-  --navy-soft:      rgba(28, 33, 42, 0.06);
-  --navy-soft-md:   rgba(28, 33, 42, 0.12);
-
-
-  /* ═══════════════════════════════════════════════
-     GLOW / SHADOW COLORS
-  ═══════════════════════════════════════════════ */
-
-  --cyan-glow:
-    0 0 30px rgba(1, 163, 161, 0.30);
-
-  --cyan-glow-lg:
-    0 0 60px rgba(1, 163, 161, 0.35);
-
-  --shadow-sm:
-    0 4px 16px rgba(28, 33, 42, 0.08);
-
-  --shadow-md:
-    0 12px 35px rgba(28, 33, 42, 0.12);
-
-  --shadow-lg:
-    0 24px 60px rgba(28, 33, 42, 0.16);
-
-
-  /* ═══════════════════════════════════════════════
-     TYPOGRAPHY
-  ═══════════════════════════════════════════════ */
-
+  /* ── TYPOGRAPHY ─────────────────────────────────────────── */
   --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-body: system-ui, sans-serif;
+  --font-body:    system-ui, sans-serif;
 
+  /* ── SPACING — min(vw, vh) based ──────────────────────────
+     Scales with the SMALLER of width or height so it never
+     outgrows a short viewport like 1280×585.
+  ────────────────────────────────────────────────────────── */
+  --section-py: clamp(48px, min(7vh, 6vw), 110px);
+  --section-px: clamp(20px, min(4vw, 5vh), 80px);
 
-  /* ═══════════════════════════════════════════════
-     SPACING
-  ═══════════════════════════════════════════════ */
+  /* Inner container max-width — fluid, grows on wide screens */
+  --inner-max:  min(1060px, 92vw);
 
-  --section-py: 88px;
-  --inner-max: 1060px;
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
 }
 
-/* ── Reset ── */
+
+/* ── Container width grows at wide/tall breakpoints ──────── */
+@media (min-width: 1400px) and (min-height: 750px) {
+  :root {
+    --inner-max:  min(1320px, 90vw);
+    --section-py: clamp(64px, min(8vh, 7vw), 130px);
+    --section-px: clamp(32px, min(5vw, 6vh), 100px);
+  }
+}
+
+@media (min-width: 1800px) and (min-height: 900px) {
+  :root {
+    --inner-max:  min(1600px, 88vw);
+    --section-py: clamp(80px, min(9vh, 8vw), 150px);
+    --section-px: clamp(48px, min(6vw, 7vh), 130px);
+  }
+}
+
+@media (min-width: 2200px) and (min-height: 1100px) {
+  :root {
+    --inner-max:  min(1900px, 86vw);
+    --section-py: clamp(96px, min(10vh, 9vw), 180px);
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   RESET
+══════════════════════════════════════════════════════════════ */
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -151,290 +167,263 @@ body {
 h1, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
-h2{
-  font-family: "Horizon", "sans-serif" !important;
 
+h2 {
+  font-family: "Horizon", sans-serif !important;
 }
 
 img, svg { display: block; }
-
 a { text-decoration: none; }
-
 button { cursor: pointer; font-family: inherit; }
 
-/* ── Scroll reveal animations ── */
-.sr {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.sr.visible { opacity: 1; transform: translateY(0); }
 
-.sl {
-  opacity: 0;
-  transform: translateX(-24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.sl.visible { opacity: 1; transform: translateX(0); }
+/* ══════════════════════════════════════════════════════════════
+   SCROLL REVEAL ANIMATIONS
+══════════════════════════════════════════════════════════════ */
 
-.srr {
-  opacity: 0;
-  transform: translateX(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.srr.visible { opacity: 1; transform: translateX(0); }
+.sr  { opacity: 0; transform: translateY(24px);  transition: opacity 0.65s ease, transform 0.65s ease; }
+.sl  { opacity: 0; transform: translateX(-24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.srr { opacity: 0; transform: translateX(24px);  transition: opacity 0.65s ease, transform 0.65s ease; }
+.sc  { opacity: 0; transform: scale(0.92);        transition: opacity 0.55s ease, transform 0.55s ease; }
 
-.sc {
-  opacity: 0;
-  transform: scale(0.92);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
-.sc.visible { opacity: 1; transform: scale(1); }
+.sr.visible,
+.sl.visible,
+.srr.visible { opacity: 1; transform: translate(0); }
+.sc.visible  { opacity: 1; transform: scale(1); }
 
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
-.delay-5 { transition-delay: 0.5s; }
-.delay-6 { transition-delay: 0.6s; }
+.delay-1 { transition-delay: 0.10s; }
+.delay-2 { transition-delay: 0.20s; }
+.delay-3 { transition-delay: 0.30s; }
+.delay-4 { transition-delay: 0.40s; }
+.delay-5 { transition-delay: 0.50s; }
+.delay-6 { transition-delay: 0.60s; }
 
-/* ── Keyframes ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 
-@keyframes lineUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+/* ══════════════════════════════════════════════════════════════
+   KEYFRAMES
+══════════════════════════════════════════════════════════════ */
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.4; transform: scale(0.7); }
-}
+@keyframes fadeUp    { from { opacity:0; transform:translateY(14px); }  to { opacity:1; transform:translateY(0); } }
+@keyframes lineUp    { from { opacity:0; transform:translateY(22px); }  to { opacity:1; transform:translateY(0); } }
+@keyframes pulse     { 0%,100%{opacity:1;transform:scale(1);}  50%{opacity:.4;transform:scale(.7);} }
+@keyframes orbFloat  { 0%,100%{transform:translate(0,0) scale(1);}  50%{transform:translate(-28px,18px) scale(1.05);} }
+@keyframes marquee   { 0%{transform:translateX(0);}  100%{transform:translateX(-50%);} }
+@keyframes float1    { 0%,100%{transform:translateY(0);}  50%{transform:translateY(-8px);} }
+@keyframes float2    { 0%,100%{transform:translateY(0);}  50%{transform:translateY(8px);} }
+@keyframes ripple    { to{transform:translate(-50%,-50%) scale(3.5);opacity:0;} }
+@keyframes scrollPulse { 0%,100%{opacity:.4;transform:scaleY(1);}  50%{opacity:1;transform:scaleY(1.15);} }
 
-@keyframes orbFloat {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50%       { transform: translate(-28px, 18px) scale(1.05); }
-}
 
-@keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+/* ══════════════════════════════════════════════════════════════
+   LAYOUT UTILITIES
+══════════════════════════════════════════════════════════════ */
 
-@keyframes float1 {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
-}
-
-@keyframes float2 {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(8px); }
-}
-
-@keyframes ripple {
-  to { transform: translate(-50%, -50%) scale(3.5); opacity: 0; }
-}
-
-@keyframes timelineFill {
-  from { width: 0; }
-  to   { width: 100%; }
-}
-
-/* ── Shared utility classes ── */
 .inner {
   max-width: var(--inner-max);
-  margin: 0 auto;
+  width: 100%;
+  margin-left:  auto;
+  margin-right: auto;
 }
 
+/* Section — flex so justify-content centers content in 100vh */
 .section {
-  padding: var(--section-py) 28px;
+  padding: var(--section-py) var(--section-px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.section-alt {
-  background: var(--g50);
-}
+.section > .inner,
+.section-alt > .inner { width: 100%; }
 
-.section-dark {
-  background: var(--navy);
-}
+.section-alt  { background: var(--g50);  }
+.section-dark { background: var(--navy); }
 
+
+/* ══════════════════════════════════════════════════════════════
+   TYPOGRAPHY — min(vw, vh) everywhere
+   ─────────────────────────────────────────────────────────────
+   Comparison at key screen sizes:
+
+   Screen         vw-only   min(vw,vh)  Verdict
+   1280 × 585     83 px      46 px      ✓ fits 585px height
+   1440 × 900     64 px      64 px      ✓ normal laptop
+   1920 × 1080    86 px      86 px      ✓ desktop
+   2560 × 1440   100 px     100 px      ✓ large (capped)
+══════════════════════════════════════════════════════════════ */
+
+/* ── Eyebrow label ───────────────────────────────────────── */
 .eyebrow {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--cyan);
-  letter-spacing: 3px;
+  font-size:      clamp(10px, min(0.75vw, 1.4vh), 14px);
+  font-weight:    700;
+  color:          var(--cyan);
+  letter-spacing: clamp(2px, min(0.2vw, 0.35vh), 4px);
   text-transform: uppercase;
-  display: block;
-  margin-bottom: 10px;
-  font-size:"14px";
+  display:        block;
+  margin-bottom:  clamp(6px, 1.2vh, 12px);
 }
 
+/* ── Section H2 ─────────────────────────────────────────── */
 .sec-h2 {
-  font-family: "Horizon", "sans-serif" !important;
-  font-size: 33px;
-  font-weight: 800;
-  color: var(--navy);
-  line-height: 1.12;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
+  font-family:    "Horizon", sans-serif !important;
+  font-size:      clamp(22px, min(2.6vw, 4.5vh), 48px);
+  font-weight:    800;
+  color:          var(--navy);
+  line-height:    1.1;
+  letter-spacing: clamp(0.5px, min(0.12vw, 0.2vh), 2px);
+  margin-bottom:  clamp(8px, 1.5vh, 16px);
 }
 
+/* ── Section subtitle ───────────────────────────────────── */
 .sec-sub {
-  font-size: 13px;
-  color: var(--g500);
-  line-height: 1.8;
-  max-width: 540px;
+  font-size:   clamp(13px, min(1.0vw, 2.0vh), 18px);
+  color:       var(--g500);
+  line-height: 1.78;
+  max-width:   min(560px, 80vw);
 }
 
-.sh        { margin-bottom: 48px; }
-.sh-center { text-align: center; }
+/* ── Section header spacing ─────────────────────────────── */
+.sh         { margin-bottom: clamp(28px, min(4vh, 4vw), 60px); }
+.sh-center  { text-align: center; }
 .sh-center .sec-sub { margin: 0 auto; }
 
+/* ── Gradient text ──────────────────────────────────────── */
 .grad-text {
-  background: linear-gradient(135deg, var(--cyanBr), var(--royalL));
+  background:              linear-gradient(135deg, var(--cyanBr), var(--royalL));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background-clip:         text;
 }
 
-/* ── Shared Btn ── */
+
+/* ══════════════════════════════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════════════════════════════ */
+
 .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 12px 24px;
+  display:       inline-flex;
+  align-items:   center;
+  gap:           7px;
+  padding:       clamp(10px, 1.3vh, 16px) clamp(18px, 2vw, 30px);
   border-radius: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  border: none;
-  font-family: var(--font-heading);
-  transition: all 0.25s;
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: pointer;
+  font-size:     clamp(12px, min(0.9vw, 1.7vh), 15px);
+  font-weight:   700;
+  border:        none;
+  font-family:   var(--font-heading);
+  transition:    all 0.25s;
+  position:      relative;
+  overflow:      hidden;
+  white-space:   nowrap;
+  cursor:        pointer;
 }
 
 .btn-primary {
-  background: var(--grad);
-  color: White;
-  box-shadow: 0 0 24px rgba(37, 99, 235, 0.4);
-    font-family: "Recursive", "sans-serif" !important;
+  background:  var(--grad);
+  color:       #fff;
+  box-shadow:  0 0 24px rgba(1, 163, 161, 0.4);
+  font-family: "Recursive", sans-serif !important;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(1, 163, 161, 0.6); }
 
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 40px rgba(37, 99, 235, 0.6);
-  border-color: rgba(83, 235, 37, 0.5) !important;
-}
+.btn-ghost   { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.22); }
+.btn-ghost:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.5); transform: translateY(-2px); }
 
-.btn-ghost {
-  background: transparent;
-  color: #fff;
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
-}
-.btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-2px);
-}
+.btn-white   { background: #fff; color: var(--navy); }
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(28,33,42,.2); }
 
-.btn-white {
-  background: #fff;
-  color: var(--navy);
-}
-.btn-white:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(7, 26, 53, 0.2);
-}
+.btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--g300); }
+.btn-outline:hover { border-color: var(--royal); color: var(--royal); transform: translateY(-1px); }
 
-.btn-outline {
-  background: transparent;
-  color: var(--navy);
-  border: 1.5px solid var(--g300);
-}
-.btn-outline:hover {
-  border-color: var(--royal);
-  color: var(--royal);
-  transform: translateY(-1px);
-}
 
-/* ── Tag chip ── */
+/* ══════════════════════════════════════════════════════════════
+   TAG CHIPS
+══════════════════════════════════════════════════════════════ */
+
 .ptag {
-  padding: 3px 9px;
+  padding:       3px 9px;
   border-radius: 100px;
-  font-size: 9px;
-  font-weight: 700;
-  background: var(--g100);
-  color: var(--g600);
+  font-size:     clamp(8px, min(0.65vw, 1.2vh), 11px);
+  font-weight:   700;
+  background:    var(--g100);
+  color:         var(--g600);
 }
-.ptag-active {
-  background: rgba(6, 182, 212, 0.1);
-  color: var(--cyan);
-}
+.ptag-active { background: rgba(1,163,161,.1); color: var(--cyan); }
 
-/* ── Toast ── */
+
+/* ══════════════════════════════════════════════════════════════
+   TOAST
+══════════════════════════════════════════════════════════════ */
+
 .toast {
-  position: fixed;
-  top: 80px;
-  right: 16px;
-  background: var(--navy);
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 9px;
-  font-size: 12px;
-  font-weight: 600;
+  position: fixed; top: 80px; right: 16px;
+  background: var(--navy); color: #fff;
+  padding: 10px 15px; border-radius: 9px;
+  font-size: 12px; font-weight: 600;
   font-family: var(--font-heading);
-  display: flex;
-  align-items: center;
-  gap: 7px;
+  display: flex; align-items: center; gap: 7px;
   z-index: 700;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 6px 28px rgba(7, 26, 53, 0.4);
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 6px 28px rgba(28,33,42,.4);
   max-width: 280px;
   animation: fadeUp 0.3s ease;
 }
 
-/* ── Responsive ── */
+
+/* ══════════════════════════════════════════════════════════════
+   SHORT VIEWPORT SAFETY NET
+   Targets 1280×585 and similar wide-but-short screens.
+   vh-based fonts are used when height is the constraint.
+══════════════════════════════════════════════════════════════ */
+
+@media (max-height: 700px) and (min-width: 900px) {
+
+  /* Section padding compresses so content fits without scrolling */
+  .section,
+  .section-alt {
+    padding: clamp(20px, 4vh, 48px) var(--section-px) !important;
+  }
+
+  /* Section H2 — scales with height, not width */
+  .sec-h2 {
+    font-size: clamp(20px, 5vh, 34px) !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .sec-sub {
+    font-size: clamp(12px, 2.2vh, 15px) !important;
+    line-height: 1.65 !important;
+  }
+
+  .eyebrow {
+    font-size: clamp(9px, 1.5vh, 12px) !important;
+    margin-bottom: 6px !important;
+  }
+
+  .sh { margin-bottom: clamp(16px, 3vh, 36px) !important; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE (downward scaling)
+══════════════════════════════════════════════════════════════ */
+
 @media (max-width: 900px) {
-  :root { --section-py: 60px; }
+  :root {
+    --section-py: clamp(40px, 7vh, 72px);
+    --section-px: clamp(16px, 4vw, 32px);
+  }
 }
+
 @media (max-width: 640px) {
-  :root { --section-py: 48px; }
+  :root {
+    --section-py: clamp(32px, 6vh, 56px);
+    --section-px: clamp(14px, 4vw, 22px);
+  }
+  .sec-h2  { font-size: clamp(20px, 6vw, 30px) !important; letter-spacing: 0.5px !important; }
+  .sec-sub { font-size: clamp(13px, 3.5vw, 16px) !important; }
 }
 
-@font-face {
-  font-family: "Mokoto";
-  src: url("./assets/fonts/Mokoto\ Demo.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Mental";
-  src: url("./assets/fonts/Fontspring-DEMO-mental_thin.otf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  font-weight: bolder;
-}
-@font-face {
-  font-family: "Horizon";
-  src: url("./assets/fonts/Horizon.otf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  font-weight: bolder;
-}
-@font-face {
-  font-family: "Recursive";
-  src: url("./assets/fonts/Recursive-VariableFont_CASL\,CRSV\,MONO\,slnt\,wght.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  font-weight: bolder;
+@media (max-width: 400px) {
+  :root { --section-py: 28px; --section-px: 14px; }
 }

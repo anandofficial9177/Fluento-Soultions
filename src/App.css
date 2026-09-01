@@ -1155,7 +1155,7 @@ white-space: nowrap;
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   /* min-height: 100vh; */
   padding: 0;
   background: var(--navy);
@@ -1861,7 +1861,7 @@ p{
     ),
     #1C212A;
 
-  padding: 110px 0 95px;
+  padding: 110px 0 0;
 }
 
 
@@ -4629,7 +4629,7 @@ p{
 .why-item-icon { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
 .why-item-no { background: rgba(239,68,68,.12); color: #F87171; }
 .why-item-yes { background: rgba(34,197,94,.12); color: #4ADE80; }
-.why-item-text { font-size: 25px; color: rgba(255,255,255,.55); line-height: 1.5; }
+.why-item-text { font-size: 22px; color: rgba(255,255,255,.55); line-height: 1.5; }
 .why-item-text.ok { color: rgba(255,255,255,.85); }
 
 /* ── JOURNEY TIMELINE ── */
@@ -5527,7 +5527,7 @@ mask-image: linear-gradient(
    ========================================================= */
 
 .cta-feature-card {
-      height: 600px;
+      /* height: 600px; */
 
   position: relative;
 
@@ -5881,7 +5881,7 @@ mask-image: linear-gradient(
   text-align: center;
 }
 .page-hero-orb { position: absolute; border-radius: 50%; filter: blur(72px); pointer-events: none; }
-.page-hero-title { font-family: var(--font-heading); font-size: clamp(28px, 5vw, 50px); font-weight: 900; color: #fff; letter-spacing: -1.5px; margin-bottom: 10px; }
+.page-hero-title { font-family: 'Horizon'; font-size: clamp(28px, 5vw, 50px); font-weight: 900; color: #fff; letter-spacing: -1.5px; margin-bottom: 10px; }
 .page-hero-sub { font-size: 13px; color: rgba(255,255,255,.5); max-width: 480px; margin: 0 auto; line-height: 1.75; }
 
 /* ── TEAM CARDS ── */
@@ -6074,7 +6074,7 @@ color: #fff;}
 .about-hero-content {
   width: min(1180px, calc(100% - 48px));
 
-  margin: 0 auto;
+  margin-top: 16vh;
 
   position: relative;
   z-index: 3;
@@ -12562,4 +12562,1163 @@ font-family: "Recursive", "sans-serif" !important;
     font-size: 12.5px;
   }
 
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   ⬆  LARGE-SCREEN FLUID SYSTEM
+   Add at the VERY END of App.css — CSS cascade lets these override.
+
+   ROOT PROBLEMS FIXED:
+   ① align-content:center without display:flex/grid → content top-sticks
+   ② Fixed px fonts/padding don't grow inside min-height:100vh
+   ③ No min-width breakpoints (only max-width existed → never scaled up)
+
+   HOW clamp(MIN, PREFERRED, MAX) WORKS:
+   • clamp(48px, 8vw, 120px)
+     → at 600px  screen : 48px   (floor)
+     → at 1200px screen : 96px   (8% of 1200)
+     → at 1600px screen : 120px  (ceiling)
+   Fluid: scales smoothly. No breakpoint jumps.
+══════════════════════════════════════════════════════════════════ */
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ①  SECTION VERTICAL CENTERING
+   Problem: align-content:center only works inside flex/grid.
+   Without display:flex the property is silently ignored.
+   Content sticks to the top leaving a huge gap below on 100vh.
+───────────────────────────────────────────────────────────────*/
+.section,
+.section-alt,
+.video-showcase,
+.stats-section,
+.testimonials-section,
+.video-stories-section,
+.why-section,
+.programs-section {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Inner containers must be full-width inside the flex parent */
+.section > .inner,
+.section-alt > .inner,
+.video-showcase > .inner,
+.stats-section > .stats-grid,
+.testimonials-section > .inner,
+.video-stories-section > .inner,
+.why-section > .inner {
+  width: 100%;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ②  SECTION PADDING — fluid, never too tight or too loose
+   Problem: padding:10px 10px 24px 10px !important is paper-thin.
+   On a 27" iMac this makes content nearly touch the screen edge.
+───────────────────────────────────────────────────────────────*/
+.section,
+.section-alt {
+  /*  TOP/BOTTOM: min 48px → scales → max 120px
+      LEFT/RIGHT: min 24px → scales → max 96px       */
+  padding: clamp(48px, 8vh, 120px) clamp(24px, 5vw, 96px) !important;
+}
+
+.video-showcase {
+  padding: clamp(32px, 5vh, 80px) clamp(24px, 4vw, 72px) !important;
+}
+
+.stats-section {
+  padding: clamp(48px, 7vh, 100px) clamp(24px, 4vw, 60px) !important;
+}
+
+.testimonials-section {
+  padding: clamp(56px, 8vh, 120px) clamp(24px, 5vw, 80px) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ③  INNER CONTAINER — grows proportionally on wide screens
+   Problem: .inner has a fixed max-width.
+   On 2560px the content is a narrow column in a huge white box.
+───────────────────────────────────────────────────────────────*/
+.inner {
+  /*  Never exceeds 92% viewport width, caps at 1160px default  */
+  max-width: min(1160px, 92vw) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+}
+
+@media (min-width: 1400px) {
+  .inner { max-width: min(1380px, 90vw) !important; }
+}
+
+@media (min-width: 1800px) {
+  .inner { max-width: min(1640px, 88vw) !important; }
+}
+
+@media (min-width: 2200px) {
+  .inner { max-width: min(1960px, 86vw) !important; }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ④  FLUID TYPOGRAPHY
+   Problem: Every font size is a fixed px. At 2560px a 60px hero
+   H1 that fills the screen on laptop looks tiny on iMac.
+   Rule of thumb: viewport-relative preferred value = px / 1440 * 100
+───────────────────────────────────────────────────────────────*/
+
+/* HERO H1 */
+.hero-h1 {
+  font-size: clamp(44px, 6.5vw, 130px) !important;
+  line-height: 0.92 !important;
+  letter-spacing: clamp(-2px, -0.3vw, -5px) !important;
+}
+
+/* SECTION H2s  */
+.sec-h2,
+.programs-heading h2 {
+  font-size: clamp(28px, 3.8vw, 64px) !important;
+  letter-spacing: clamp(-0.5px, -0.1vw, -2px) !important;
+}
+
+/* H3 / card titles */
+h3 {
+  font-size: clamp(17px, 2vw, 34px) !important;
+}
+
+/* BODY COPY — 18px global is fine but cap it so it doesn't run too wide */
+p {
+  font-size: clamp(14px, 1.15vw, 20px) !important;
+  line-height: 1.78 !important;
+}
+
+/* HERO SUBTITLE */
+.hero-minimal-sub {
+  font-size: clamp(14px, 1.5vw, 22px) !important;
+  max-width: min(680px, 80vw) !important;
+  line-height: 1.7 !important;
+}
+
+/* STAT NUMBERS */
+.stat-number {
+  font-size: clamp(32px, 3.2vw, 64px) !important;
+  margin-bottom: clamp(4px, 0.5vh, 10px) !important;
+}
+
+.stat-label {
+  font-size: clamp(10px, 0.9vw, 15px) !important;
+}
+
+/* CHECK LIST TEXT — was 24px which is body-text large */
+.check-text {
+  font-size: clamp(14px, 1.2vw, 20px) !important;
+  line-height: 1.7 !important;
+}
+
+/* EYEBROW / badge labels */
+.eyebrow,
+.programs-eyebrow,
+.trust-label {
+  font-size: clamp(9px, 0.75vw, 13px) !important;
+  letter-spacing: clamp(2px, 0.2vw, 3.5px) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ⑤  HERO INNER LAYOUT
+   Problem: hero-minimal-inner has margin-left:30px + width:100%
+   but no max-width → content stretches 100% of 2560px screen.
+───────────────────────────────────────────────────────────────*/
+.hero-minimal-inner {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  padding: clamp(60px, 10vh, 140px) clamp(28px, 6vw, 120px) !important;
+  max-width: min(960px, 80vw) !important;
+  width: 100% !important;
+  margin: 0 !important;      /* remove the margin-left:30px */
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ⑥  HERO STAT CHIPS — scale on large screens
+───────────────────────────────────────────────────────────────*/
+.hero-stats-strip {
+  gap: clamp(6px, 0.6vw, 12px) !important;
+}
+
+.hero-stat-chip {
+  padding: clamp(7px, 0.9vh, 14px) clamp(14px, 1.5vw, 26px) !important;
+  gap: clamp(6px, 0.6vw, 12px) !important;
+}
+
+.hero-stat-n {
+  font-size: clamp(14px, 1.6vw, 26px) !important;
+}
+
+.hero-stat-l {
+  font-size: clamp(9px, 0.8vw, 14px) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ⑦  STATS GRID — was capped at 900px, tiny on wide screens
+───────────────────────────────────────────────────────────────*/
+.stats-grid {
+  max-width: min(1200px, 92%) !important;
+  gap: clamp(14px, 2vw, 32px) !important;
+}
+
+.stat-card {
+  padding: clamp(22px, 3vh, 52px) clamp(12px, 1.8vw, 28px) !important;
+  border-radius: clamp(12px, 1.2vw, 22px) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ⑧  ABOUT SECTION — illustration scales, grid gap scales
+───────────────────────────────────────────────────────────────*/
+.about-grid {
+  gap: clamp(32px, 5vw, 100px) !important;
+}
+
+.about-illustration {
+  min-height: clamp(320px, 38vh, 580px) !important;
+  padding: clamp(20px, 3vw, 52px) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ⑨  VIDEO PLAYER — fixed 360px height looks flat on 2K
+───────────────────────────────────────────────────────────────*/
+.video-thumb {
+  height: clamp(240px, 36vh, 520px) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ⑩  CARD GRIDS — gaps and padding scale with viewport
+───────────────────────────────────────────────────────────────*/
+@media (min-width: 1400px) {
+
+  /* Team grid */
+  .team-grid {
+    gap: clamp(20px, 2.5vw, 44px);
+  }
+  .team-body { padding: clamp(18px, 2vw, 36px) !important; }
+  .team-name { font-size: clamp(14px, 1.3vw, 22px) !important; }
+  .team-bio  { font-size: clamp(11px, 0.95vw, 16px) !important; }
+
+  /* Testimonials */
+  .testimonials-grid {
+    gap: clamp(14px, 2vw, 32px);
+  }
+  .testimonial-card { padding: clamp(22px, 2.5vw, 46px); }
+  .testimonial-text { font-size: clamp(11px, 0.95vw, 16px) !important; }
+
+  /* Blog */
+  .blog-grid { gap: clamp(14px, 2vw, 30px); }
+
+  /* Video stories */
+  .video-stories-grid { gap: clamp(14px, 2vw, 30px); }
+
+  /* Industry cards */
+  .industries-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(10px, 1.5vw, 24px);
+  }
+  .industry-card { padding: clamp(16px, 2vh, 32px) clamp(12px, 1.5vw, 24px); }
+  .industry-name { font-size: clamp(10px, 0.9vw, 15px) !important; }
+
+  /* Programs card */
+  .program-card { min-height: clamp(560px, 44vh, 780px); }
+  .program-content h3 { font-size: clamp(20px, 2vw, 34px) !important; }
+  .program-content p  { font-size: clamp(13px, 1vw, 18px) !important; }
+
+  /* CTA banner */
+  .cta-banner {
+    padding: clamp(64px, 9vh, 130px) clamp(28px, 5vw, 80px) !important;
+  }
+  .cta-h2  { font-size: clamp(24px, 3.2vw, 52px) !important; }
+  .cta-sub { font-size: clamp(12px, 1.1vw, 18px) !important; }
+
+  /* Section headings */
+  .sh { margin-bottom: clamp(32px, 4vh, 72px) !important; }
+  .sec-sub { max-width: min(640px, 80%) !important; font-size: clamp(13px, 1.1vw, 18px) !important; }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ⑪  PROGRAMS SECTION — make it full-height like other sections
+───────────────────────────────────────────────────────────────*/
+.programs-section {
+  min-height: 100vh !important;
+  padding-top:    clamp(80px, 10vh, 160px) !important;
+  padding-bottom: clamp(60px, 8vh, 120px) !important;
+}
+
+@media (min-width: 1400px) {
+  .programs-container {
+    width: min(1560px, calc(100% - 48px)) !important;
+  }
+  .programs-heading h2 {
+    font-size: clamp(38px, 4.5vw, 72px) !important;
+  }
+  .programs-heading p {
+    font-size: clamp(14px, 1.1vw, 20px) !important;
+    max-width: min(860px, 80%) !important;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ⑫  XL SCREENS — 2K / 4K / 27" iMac (1920px+)
+   Extra scale bump so nothing looks microscopic on 4K.
+───────────────────────────────────────────────────────────────*/
+@media (min-width: 1920px) {
+
+  .section,
+  .section-alt {
+    padding: clamp(80px, 10vh, 160px) clamp(60px, 7vw, 140px) !important;
+  }
+
+  .hero-minimal-inner {
+    padding: clamp(100px, 12vh, 180px) clamp(80px, 8vw, 180px) !important;
+    max-width: min(1200px, 78vw) !important;
+  }
+
+  .hero-h1 {
+    font-size: clamp(80px, 7.5vw, 160px) !important;
+    letter-spacing: -6px !important;
+  }
+
+  .inner { max-width: min(1760px, 86vw) !important; }
+
+  .stat-number { font-size: clamp(52px, 4.2vw, 88px) !important; }
+  .sec-h2      { font-size: clamp(40px, 4.5vw, 80px) !important; }
+
+  .navbar-spacer { height: 90px; }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ⑬  FOOTER — padding scales, doesn't shrink on large screens
+───────────────────────────────────────────────────────────────*/
+.footer {
+  padding: clamp(40px, 6vh, 80px) clamp(24px, 5vw, 80px) clamp(20px, 3vh, 40px) !important;
+}
+
+.footer-grid {
+  max-width: min(1160px, 92vw) !important;
+  gap: clamp(24px, 3vw, 52px) !important;
+}
+
+@media (min-width: 1400px) {
+  .footer-grid { max-width: min(1380px, 90vw) !important; }
+}
+
+@media (min-width: 1800px) {
+  .footer-grid { max-width: min(1640px, 88vw) !important; }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FIX ⑭  CONTACT PAGE
+───────────────────────────────────────────────────────────────*/
+@media (min-width: 1400px) {
+  .contact-wrap {
+    gap: clamp(40px, 6vw, 100px) !important;
+  }
+  .form-heading { font-size: clamp(18px, 1.8vw, 28px) !important; }
+  .contact-value { font-size: clamp(12px, 1.1vw, 18px) !important; }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   PAGE HERO (sub-pages) — scales title
+───────────────────────────────────────────────────────────────*/
+.page-hero-title {
+  font-size: clamp(28px, 5vw, 72px) !important;
+  letter-spacing: clamp(-1px, -0.15vw, -2.5px) !important;
+}
+
+.page-hero-sub {
+  font-size: clamp(12px, 1.1vw, 17px) !important;
+  max-width: min(520px, 80vw) !important;
+}
+
+
+
+
+/* ══════════════════════════════════════════════════════════════
+   FLUENTO — LARGE SCREEN + SHORT VIEWPORT FIX
+   Add at the VERY END of App.css
+   
+   Replaces vw-only clamp() with min(vw, vh) everywhere.
+   This fixes font sizes on 1280×585 and similar short screens.
+
+   The formula: clamp(FLOOR, min(vw%, vh%), CEILING)
+   • On 1280×585: min() picks the vh (smaller) → fonts stay small
+   • On 1440×900: min() picks vw or vh → both balanced
+   • On 1920×1080: min() picks either → fonts grow naturally
+══════════════════════════════════════════════════════════════ */
+
+
+/* ────────────────────────────────────────────────────────────
+   1. HERO H1
+   Old:  clamp(44px, 6.5vw, 130px)  → 83px on 1280×585 ✗
+   New:  clamp(32px, min(5.0vw, 8.0vh), 100px) → 47px  ✓
+──────────────────────────────────────────────────────────── */
+.hero-h1 {
+  font-size:      clamp(32px, min(5.0vw, 8.0vh), 100px) !important;
+  line-height:    0.92 !important;
+  letter-spacing: clamp(-1.5px, min(-0.2vw, -0.3vh), -4px) !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   2. SECTION H2
+   Old:  clamp(28px, 3.8vw, 64px)  → 49px on 1280×585 ✗
+   New:  clamp(22px, min(2.6vw, 4.5vh), 48px) → 26px  ✓
+──────────────────────────────────────────────────────────── */
+.sec-h2,
+.programs-heading h2 {
+  font-size: clamp(22px, min(2.6vw, 4.5vh), 48px) !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   3. BODY TEXT (p)
+   Old:  clamp(14px, 1.15vw, 20px) → OK at 1280 but verify
+   New:  clamp(13px, min(1.0vw, 2.0vh), 18px)
+   At 1280×585: min(12.8, 11.7) = 11.7 → floored to 13px ✓
+──────────────────────────────────────────────────────────── */
+p {
+  font-size:   clamp(13px, min(1.0vw, 2.0vh), 18px) !important;
+  line-height: 1.75 !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   4. HERO SUBTITLE
+──────────────────────────────────────────────────────────── */
+.hero-minimal-sub {
+  font-size:  clamp(13px, min(1.2vw, 2.2vh), 20px) !important;
+  max-width:  min(640px, 80vw) !important;
+  line-height: 1.68 !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   5. STAT NUMBERS
+   Old:  clamp(32px, 3.2vw, 64px)  → 41px on 1280×585 ✗
+   New:  clamp(28px, min(2.8vw, 5.0vh), 60px) → 29px  ✓
+──────────────────────────────────────────────────────────── */
+.stat-number {
+  font-size: clamp(28px, min(2.8vw, 5.0vh), 60px) !important;
+}
+
+.stat-label {
+  font-size: clamp(10px, min(0.85vw, 1.5vh), 14px) !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   6. EYEBROW LABELS
+──────────────────────────────────────────────────────────── */
+.eyebrow,
+.programs-eyebrow {
+  font-size:      clamp(10px, min(0.75vw, 1.4vh), 14px) !important;
+  letter-spacing: clamp(2px, min(0.2vw, 0.35vh), 4px) !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   7. H3 TITLES
+──────────────────────────────────────────────────────────── */
+h3 {
+  font-size: clamp(16px, min(1.8vw, 3.2vh), 30px) !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   8. SECTION HEADER SPACING
+──────────────────────────────────────────────────────────── */
+.sh {
+  margin-bottom: clamp(24px, min(4vh, 4vw), 60px) !important;
+}
+
+.sec-sub {
+  font-size: clamp(13px, min(1.0vw, 2.0vh), 18px) !important;
+  max-width: min(560px, 80vw) !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   9. SECTION PADDING — scale with min(vw, vh)
+   Old:  clamp(48px, 8vh, 120px) top/bottom → fine
+         clamp(24px, 5vw, 96px) left/right  → fine
+   But on 585px height: 8vh = 46.8px each side = 94px total
+   That's 16% of the viewport just on padding. Compress it.
+──────────────────────────────────────────────────────────── */
+.section,
+.section-alt {
+  padding: clamp(36px, min(6vh, 5vw), 100px) clamp(20px, min(4vw, 5vh), 80px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   10. INNER CONTAINER — fluid with min(vw, vh) breakpoints
+──────────────────────────────────────────────────────────── */
+.inner {
+  max-width: min(1060px, 92vw) !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (min-width: 1400px) and (min-height: 750px) {
+  .inner { max-width: min(1320px, 90vw) !important; }
+}
+@media (min-width: 1800px) and (min-height: 900px) {
+  .inner { max-width: min(1600px, 88vw) !important; }
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   11. HERO INNER — remove the fixed margin-left, set max-width
+──────────────────────────────────────────────────────────── */
+.hero-minimal-inner {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  padding: clamp(40px, min(8vh, 7vw), 120px) clamp(24px, min(5vw, 7vh), 100px) !important;
+  max-width: min(880px, 80vw) !important;
+  margin: 0 !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   12. HERO STAT CHIPS
+──────────────────────────────────────────────────────────── */
+.hero-stat-chip {
+  padding: clamp(6px, 1.2vh, 12px) clamp(12px, 1.5vw, 22px) !important;
+}
+.hero-stat-n { font-size: clamp(13px, min(1.4vw, 2.5vh), 22px) !important; }
+.hero-stat-l { font-size: clamp(9px,  min(0.7vw, 1.3vh), 13px) !important; }
+
+
+/* ────────────────────────────────────────────────────────────
+   13. VIDEO THUMB — avoid fixed 360px on short screens
+──────────────────────────────────────────────────────────── */
+.video-thumb {
+  height: clamp(200px, min(35vw, 48vh), 480px) !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   14. STATS SECTION
+──────────────────────────────────────────────────────────── */
+.stats-section {
+  padding: clamp(36px, min(6vh, 5vw), 90px) clamp(20px, min(4vw, 5vh), 60px) !important;
+}
+.stats-grid {
+  max-width: min(1100px, 92%) !important;
+  gap: clamp(12px, min(1.8vw, 2.5vh), 28px) !important;
+}
+.stat-card {
+  padding: clamp(18px, min(2.5vh, 2.5vw), 44px) clamp(10px, 1.5vw, 24px) !important;
+}
+
+
+/* ────────────────────────────────────────────────────────────
+   15. ABOUT GRID
+──────────────────────────────────────────────────────────── */
+.about-grid { gap: clamp(28px, min(5vw, 6vh), 80px) !important; }
+.about-illustration { min-height: clamp(260px, min(35vw, 50vh), 520px) !important; }
+
+
+/* ────────────────────────────────────────────────────────────
+   16. CTA BANNER
+──────────────────────────────────────────────────────────── */
+.cta-h2  { font-size: clamp(22px, min(3vw, 5vh), 48px) !important; }
+.cta-sub { font-size: clamp(12px, min(1.0vw, 1.8vh), 17px) !important; }
+
+
+/* ────────────────────────────────────────────────────────────
+   17. PAGE HERO TITLES (sub-pages)
+──────────────────────────────────────────────────────────── */
+.page-hero-title { font-size: clamp(26px, min(4.5vw, 8vh), 64px) !important; }
+.page-hero-sub   { font-size: clamp(12px, min(1.0vw, 2vh),  17px) !important; }
+
+
+/* ════════════════════════════════════════════════════════════
+   SHORT VIEWPORT SAFETY NET — 1280×585 and similar
+   When height < 700px AND width > 900px (landscape laptop).
+   Switches ALL fonts to vh-based so height is the ruler.
+
+   At 585px height:
+   • 5vh = 29.25px for H1  (instead of 47px from min(vw,vh))
+   • 4vh = 23.4px  for H2
+   • 2vh = 11.7px  for body (floor kicks in → 12px)
+════════════════════════════════════════════════════════════ */
+@media (max-height: 700px) and (min-width: 900px) {
+
+  .hero-h1 {
+    font-size:      clamp(26px, 7vh, 50px) !important;
+    letter-spacing: -2px !important;
+  }
+
+  .sec-h2,
+  .programs-heading h2 {
+    font-size: clamp(18px, 4.5vh, 32px) !important;
+    letter-spacing: 0.3px !important;
+  }
+
+  h3 { font-size: clamp(15px, 3.2vh, 24px) !important; }
+
+  p  { font-size: clamp(12px, 2.2vh, 15px) !important; line-height: 1.65 !important; }
+
+  .hero-minimal-sub  { font-size: clamp(12px, 2.5vh, 16px) !important; }
+  .sec-sub           { font-size: clamp(12px, 2.2vh, 15px) !important; }
+  .eyebrow           { font-size: clamp(9px,  1.5vh, 12px) !important; }
+  .stat-number       { font-size: clamp(22px, 5.5vh, 38px) !important; }
+  .cta-h2            { font-size: clamp(20px, 5vh,   36px) !important; }
+
+  /* Tighter section padding — more room for content */
+  .section,
+  .section-alt {
+    padding: clamp(16px, 3.5vh, 40px) clamp(20px, 4vw, 60px) !important;
+  }
+
+  .stats-section {
+    padding: clamp(16px, 3vh, 36px) clamp(20px, 4vw, 60px) !important;
+  }
+
+  .sh { margin-bottom: clamp(14px, 3vh, 32px) !important; }
+
+  .hero-minimal-inner {
+    padding: clamp(30px, 5vh, 60px) clamp(24px, 5vw, 80px) !important;
+  }
+
+  .hero-stats-strip { display: none; } /* hide stats on very short screens */
+}
+
+
+
+/* ══════════════════════════════════════════════════════════════
+   FLUENTO — SPACING FIX FOR 1280 × 585 (AND ALL SHORT SCREENS)
+   Paste this at the VERY END of App.css
+
+   PROBLEM: Margins/padding waste 24% of the 585px viewport height
+   in the hero section alone. Every section compounds this.
+
+   AUDIT RESULTS at 1280×585:
+   hero-badge margin-top(20) + bottom(24)           = 44px wasted
+   hero-h1    margin-top(12) + bottom(22)           = 34px wasted
+   hero-btns  margin-top(12) + bottom(52)           = 64px wasted   ← worst
+   stats-section padding top+bottom                 = 112px wasted
+   .sh margin-bottom                                = 48px wasted
+   about-grid gap                                   = 56px wasted
+   Total hero margin waste alone                    = 141px / 585px = 24%
+
+   STRATEGY: Use clamp(MIN, Xvh, MAX) for all vertical spacing
+   so it scales down automatically when viewport is short.
+   Horizontal spacing uses clamp(MIN, Xvw, MAX).
+══════════════════════════════════════════════════════════════ */
+
+
+/* ─────────────────────────────────────────────────────────────
+   ① NAVBAR SPACER
+   76px fixed → wastes 13% of 585px height before any section
+───────────────────────────────────────────────────────────────*/
+.navbar-spacer {
+  height: clamp(40px, 8vh, 76px) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   ② HERO SECTION — all internal spacing
+   Hero-badge margins alone = 44px vertical
+   Hero-btns margin-bottom  = 52px (biggest single offender)
+───────────────────────────────────────────────────────────────*/
+
+/* Hero inner — remove fixed margin-left, use proper flex layout */
+.hero-minimal-inner {
+  display:         flex !important;
+  flex-direction:  column !important;
+  align-items:     flex-start !important;
+  width:           100% !important;
+  max-width:       min(860px, 82vw) !important;
+  margin:          0 !important;      /* remove margin-left: 30px */
+  padding:         clamp(16px, 4vh, 60px) clamp(20px, 4vw, 80px) !important;
+  gap:             0 !important;
+}
+
+/* Badge */
+.hero-badge {
+  margin-top:    clamp(4px, 1vh, 12px) !important;
+  margin-bottom: clamp(6px, 1.2vh, 16px) !important;
+  padding:       clamp(4px, 0.8vh, 8px) clamp(10px, 1.4vw, 18px) !important;
+}
+
+/* H1 */
+.hero-h1 {
+  margin-top:    clamp(2px, 0.6vh, 10px) !important;
+  margin-bottom: clamp(6px, 1.2vh, 18px) !important;
+}
+
+/* Subtitle */
+.hero-minimal-sub {
+  margin-bottom: clamp(6px, 1.2vh, 14px) !important;
+}
+
+/* CTA buttons row — 52px bottom margin was the biggest waster */
+.hero-minimal-btns {
+  margin-top:    clamp(4px, 1vh, 14px) !important;
+  margin-bottom: clamp(8px, 1.5vh, 28px) !important;  /* was 52px */
+  gap:           clamp(8px, 1.2vw, 14px) !important;
+}
+
+/* Stat chips strip */
+.hero-stats-strip {
+  gap:    clamp(4px, 0.6vw, 8px) !important;
+  margin-top: 0 !important;
+}
+
+.hero-stat-chip {
+  padding: clamp(5px, 0.9vh, 10px) clamp(10px, 1.2vw, 18px) !important;
+  gap:     clamp(5px, 0.6vw, 8px) !important;
+}
+
+/* Scroll hint — less intrusive on short screens */
+.hero-scroll-hint {
+  bottom: clamp(8px, 2vh, 28px) !important;
+}
+.hero-scroll-line {
+  height: clamp(20px, 4vh, 40px) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   ③ GLOBAL SECTION PADDING
+   All sections (.section, .section-alt + named sections)
+───────────────────────────────────────────────────────────────*/
+.section,
+.section-alt {
+  padding: clamp(16px, 4vh, 80px) clamp(16px, 3vw, 60px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Inner container — never wider than 92vw */
+.inner {
+  max-width:   min(1060px, 92vw) !important;
+  width:       100% !important;
+  margin-left:  auto !important;
+  margin-right: auto !important;
+}
+
+/* Section header (eyebrow + h2 + subtitle) */
+.sh {
+  margin-bottom: clamp(14px, 3vh, 48px) !important;
+}
+
+.sec-sub {
+  max-width: min(540px, 88vw) !important;
+  margin-top: clamp(4px, 0.8vh, 10px) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   ④ STATS SECTION
+   Had 56px top + 56px bottom = 112px just for padding
+───────────────────────────────────────────────────────────────*/
+.stats-section {
+  padding: clamp(20px, 4vh, 56px) clamp(16px, 3vw, 40px) !important;
+  min-height: unset !important;   /* stats don't need 100vh */
+}
+
+.stats-grid {
+  max-width: min(1000px, 92%) !important;
+  gap:       clamp(10px, 1.5vw, 18px) !important;
+}
+
+.stat-card {
+  padding:       clamp(14px, 2.5vh, 28px) clamp(10px, 1.2vw, 16px) !important;
+  border-radius: clamp(10px, 1vw, 16px) !important;
+}
+
+.stat-icon {
+  margin-bottom: clamp(6px, 1vh, 12px) !important;
+}
+.stat-icon svg { width: clamp(28px, 3.5vw, 38px); height: auto; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑤ ABOUT SECTION
+   about-grid gap: 56px — too wide, pushes content apart
+   about-illustration min-height: 414px — too tall for 585px screen
+───────────────────────────────────────────────────────────────*/
+.about-grid {
+  gap:                   clamp(20px, 3.5vw, 56px) !important;
+  grid-template-columns: 1fr 1fr !important;
+}
+
+.about-illustration {
+  min-height: clamp(200px, 30vh, 420px) !important;
+  padding:    clamp(16px, 2.5vw, 32px) !important;
+}
+
+.about-pill-1 { bottom: 10px; left: -8px; }
+.about-pill-2 { top: 10px; right: -8px; }
+
+.check-list {
+  gap:    clamp(7px, 1.2vh, 14px) !important;
+  margin: clamp(8px, 1.5vh, 18px) 0 clamp(12px, 2vh, 26px) !important;
+}
+
+.check-item { gap: clamp(7px, 1vw, 12px) !important; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑥ VIDEO SHOWCASE
+   Had padding: 0 28px 88px — 88px bottom is too large
+───────────────────────────────────────────────────────────────*/
+.video-showcase {
+  padding: clamp(12px, 2.5vh, 40px) clamp(16px, 3vw, 40px) clamp(20px, 4vh, 60px) !important;
+  min-height: unset !important;
+}
+
+.video-player { max-width: min(1060px, 94vw) !important; }
+
+.video-thumb {
+  height: clamp(180px, 30vh, 360px) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑦ PROGRAMS SECTION
+   Had padding-top: 110px — nearly 19% of the 585px viewport
+───────────────────────────────────────────────────────────────*/
+.programs-section {
+  padding-top:    clamp(40px, 7vh, 110px) !important;
+  padding-bottom: clamp(30px, 5vh, 80px) !important;
+  min-height:     100vh !important;
+}
+
+.programs-heading {
+  margin: 0 auto clamp(20px, 4vh, 55px) !important;
+}
+
+.programs-container {
+  width: min(1420px, calc(100% - 32px)) !important;
+}
+
+.program-card {
+  min-height: clamp(320px, 50vh, 560px) !important;
+}
+
+.program-content {
+  padding: clamp(16px, 2.5vh, 28px) clamp(14px, 2vw, 24px) clamp(14px, 2vh, 22px) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑧ TESTIMONIALS SECTION
+───────────────────────────────────────────────────────────────*/
+.testimonials-section {
+  padding: clamp(28px, 5vh, 88px) clamp(16px, 3vw, 40px) !important;
+}
+
+.testimonials-grid {
+  gap: clamp(10px, 1.5vw, 18px) !important;
+}
+
+.testimonial-card {
+  padding:       clamp(14px, 2.5vh, 28px) !important;
+  border-radius: clamp(12px, 1vw, 18px) !important;
+}
+
+.testimonial-quote {
+  font-size:     clamp(20px, 2.5vh, 30px) !important;
+  margin-bottom: clamp(6px, 1vh, 12px) !important;
+}
+
+.testimonial-text { margin-bottom: clamp(10px, 1.5vh, 18px) !important; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑨ VIDEO STORIES
+───────────────────────────────────────────────────────────────*/
+.video-stories-section {
+  padding: clamp(12px, 2.5vh, 40px) clamp(16px, 3vw, 40px) clamp(24px, 5vh, 60px) !important;
+}
+
+.video-stories-grid {
+  gap:        clamp(10px, 1.4vw, 18px) !important;
+  margin-top: clamp(14px, 2.5vh, 32px) !important;
+}
+
+.video-story-thumb {
+  height: clamp(90px, 14vh, 140px) !important;
+}
+
+.video-story-body { padding: clamp(10px, 1.5vh, 14px) !important; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑩ BLOG / INSIGHTS
+───────────────────────────────────────────────────────────────*/
+.blog-grid { gap: clamp(10px, 1.4vw, 18px) !important; }
+
+.blog-thumb { height: clamp(80px, 12vh, 120px) !important; }
+
+.blog-body { padding: clamp(10px, 1.5vh, 16px) !important; }
+
+.blog-title { margin-bottom: clamp(3px, 0.6vh, 6px) !important; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑪ CTA BANNER
+   Had padding: 76px 28px → 152px vertical total
+───────────────────────────────────────────────────────────────*/
+.cta-banner {
+  padding: clamp(28px, 6vh, 76px) clamp(16px, 3vw, 40px) !important;
+}
+
+.cta-h2 { margin-bottom: clamp(6px, 1.2vh, 12px) !important; }
+.cta-sub { margin-bottom: clamp(14px, 2.5vh, 28px) !important; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑫ WHY FLUENTO SECTION
+───────────────────────────────────────────────────────────────*/
+.why-section {
+  padding: clamp(28px, 5vh, 88px) clamp(16px, 3vw, 40px) !important;
+}
+
+.why-cards {
+  gap:        clamp(12px, 2vw, 22px) !important;
+  margin-top: clamp(16px, 3vh, 40px) !important;
+}
+
+.why-card { padding: clamp(16px, 2.5vh, 28px) !important; }
+
+.why-card-title { margin-bottom: clamp(10px, 1.8vh, 20px) !important; }
+
+.why-item { margin-bottom: clamp(7px, 1.2vh, 12px) !important; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑬ JOURNEY / TIMELINE
+───────────────────────────────────────────────────────────────*/
+.journey-wrap { margin-top: clamp(20px, 4vh, 48px) !important; }
+
+.journey-step-num {
+  width:         clamp(44px, 7vh, 62px) !important;
+  height:        clamp(44px, 7vh, 62px) !important;
+  margin-bottom: clamp(8px, 1.5vh, 14px) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑭ INDUSTRIES GRID
+───────────────────────────────────────────────────────────────*/
+.industries-grid { gap: clamp(8px, 1.2vw, 14px) !important; }
+
+.industry-card {
+  padding: clamp(12px, 2vh, 22px) clamp(10px, 1.2vw, 16px) !important;
+}
+
+.industry-icon { margin-bottom: clamp(5px, 0.9vh, 10px) !important; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑮ TEAM CARDS
+───────────────────────────────────────────────────────────────*/
+.team-grid { gap: clamp(12px, 1.8vw, 22px) !important; }
+
+.team-photo { height: clamp(100px, 18vh, 170px) !important; }
+
+.team-body { padding: clamp(14px, 2vh, 22px) !important; }
+
+.team-name   { margin-bottom: 2px !important; }
+.team-role   { margin-bottom: clamp(5px, 0.9vh, 10px) !important; }
+.team-tag    { margin-top:    clamp(7px, 1.2vh, 12px) !important; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑯ PAGE HERO (sub-pages: About, Programs, How, Contact)
+   Had padding: 72px 28px 60px → 132px vertical total
+───────────────────────────────────────────────────────────────*/
+.page-hero {
+  padding: clamp(28px, 6vh, 72px) clamp(16px, 3vw, 40px) clamp(24px, 5vh, 60px) !important;
+}
+
+.page-hero-title { margin-bottom: clamp(6px, 1.2vh, 12px) !important; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑰ CONTACT FORM
+───────────────────────────────────────────────────────────────*/
+.contact-wrap { gap: clamp(24px, 4vw, 52px) !important; }
+
+.form-card { padding: clamp(16px, 2.5vh, 30px) !important; }
+
+.form-fields { gap: clamp(8px, 1.3vh, 12px) !important; }
+
+.form-heading { margin-bottom: clamp(2px, 0.5vh, 5px) !important; }
+.form-sub     { margin-bottom: clamp(10px, 1.8vh, 20px) !important; }
+
+.contact-info-item { margin-bottom: clamp(8px, 1.5vh, 18px) !important; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑱ FOOTER
+   Had padding: 52px 28px 26px
+───────────────────────────────────────────────────────────────*/
+.footer {
+  padding: clamp(28px, 5vh, 52px) clamp(16px, 3vw, 36px) clamp(14px, 2.5vh, 26px) !important;
+}
+
+.footer-grid {
+  max-width:     min(1060px, 92vw) !important;
+  gap:           clamp(20px, 3vw, 40px) !important;
+  margin-bottom: clamp(16px, 3vh, 32px) !important;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   ⑲ MODAL PADDING
+───────────────────────────────────────────────────────────────*/
+.modal-box {
+  padding: clamp(16px, 3vh, 30px) !important;
+}
+
+
+/* ════════════════════════════════════════════════════════════
+   SHORT VIEWPORT HARD LIMIT — 1280 × 585 and similar
+   When height < 650px: switch to vh-only spacing, compress hard.
+   This is the catch-all for anything the clamp() above misses.
+════════════════════════════════════════════════════════════ */
+@media (max-height: 650px) and (min-width: 900px) {
+
+  /* ── Navbar spacer shrinks further ── */
+  .navbar-spacer { height: 44px !important; }
+
+  /* ── Hero — ultra-compact ── */
+  .hero-minimal-inner {
+    padding: 2vh 4vw !important;
+    gap: 0 !important;
+  }
+
+  .hero-badge {
+    margin-top: 0 !important;
+    margin-bottom: 1vh !important;
+    padding: 4px 12px !important;
+    font-size: 9px !important;
+  }
+
+  .hero-h1 {
+    margin-top: 0 !important;
+    margin-bottom: 1vh !important;
+  }
+
+  .hero-minimal-sub {
+    margin-bottom: 1.5vh !important;
+  }
+
+  .hero-minimal-btns {
+    margin-top: 0 !important;
+    margin-bottom: 0.5vh !important;
+    gap: 8px !important;
+  }
+
+  /* Stat chips — hide on very short screens to save space */
+  .hero-stats-strip { display: none !important; }
+
+  /* Scroll hint hidden — no room */
+  .hero-scroll-hint { display: none !important; }
+
+  /* ── All sections ── */
+  .section,
+  .section-alt {
+    padding: 2vh 4vw !important;
+    min-height: unset !important;    /* drop 100vh requirement on short screens */
+    height: auto !important;
+  }
+
+  .stats-section { padding: 2vh 4vw !important; min-height: unset !important; }
+  .why-section   { padding: 2vh 4vw !important; }
+  .testimonials-section { padding: 2vh 4vw !important; }
+  .video-stories-section { padding: 1vh 4vw 2vh !important; }
+  .video-showcase { padding: 1vh 4vw 2vh !important; }
+
+  /* ── Section headers ── */
+  .sh { margin-bottom: 2vh !important; }
+
+  /* ── Stats ── */
+  .stat-card    { padding: 1.5vh 1.2vw !important; }
+  .stat-icon    { margin-bottom: 0.8vh !important; }
+  .stat-icon svg { width: 24px !important; height: 24px !important; }
+
+  /* ── About ── */
+  .about-grid          { gap: 2.5vw !important; }
+  .about-illustration  { min-height: 24vh !important; padding: 1.5vw !important; }
+  .check-list          { margin: 1vh 0 1.5vh !important; gap: 0.8vh !important; }
+
+  /* ── Video thumb ── */
+  .video-thumb { height: 64vh !important; }
+
+  /* ── Programs ── */
+  .programs-section { padding-top: 4vh !important; padding-bottom: 3vh !important; }
+  .programs-heading { margin-bottom: 2.5vh !important; }
+  .program-card     { min-height: 38vh !important; }
+
+  /* ── Testimonials ── */
+  .testimonial-card { padding: 1.5vh !important; }
+
+  /* ── CTA Banner ── */
+  .cta-banner { padding: 3vh 4vw !important; }
+
+  /* ── Page heroes ── */
+  .page-hero { padding: 3vh 4vw 2vh !important; }
+
+  /* ── Footer ── */
+  .footer { padding: 2.5vh 4vw 1.5vh !important; }
+  .footer-grid { margin-bottom: 1.5vh !important; gap: 2vw !important; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   LARGE SCREEN GROWTH — 1400px+ WITH NORMAL HEIGHT
+   Re-expand spacing for wider/taller screens.
+   Only triggers when height is ALSO tall enough (≥ 750px).
+═══════════════════════════════════════════════════════════ */
+@media (min-width: 1400px) and (min-height: 750px) {
+
+  .inner          { max-width: min(1320px, 90vw) !important; }
+  .sh             { margin-bottom: clamp(32px, 4.5vh, 64px) !important; }
+  .about-grid     { gap: clamp(40px, 5vw, 80px) !important; }
+  .stats-grid     { max-width: min(1200px, 90%) !important; gap: clamp(16px, 2vw, 28px) !important; }
+  .why-cards      { margin-top: clamp(24px, 4vh, 48px) !important; }
+  .team-photo     { height: clamp(130px, 20vh, 180px) !important; }
+  .team-grid      { gap: clamp(16px, 2vw, 28px) !important; }
+  .blog-grid      { gap: clamp(14px, 1.8vw, 24px) !important; }
+  .blog-thumb     { height: clamp(100px, 14vh, 130px) !important; }
+  .footer-grid    { gap: clamp(28px, 3.5vw, 48px) !important; }
 }
