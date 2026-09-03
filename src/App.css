@@ -13738,7 +13738,8 @@ h3 {
 
 @media (max-width: 1000px) {
       .mobile-brand-tag {
-            color: #01a3a1 !important;
+            color: aqua !important;
+            
       }
   .about-hero-title {
         font-size: clamp(43px, 6vw, 116px ) !important;
@@ -13752,7 +13753,8 @@ h3 {
     .about-team-left h2 {
         font-size: 41px !important;}
   .hero {
-    min-height: 500px;}
+    /* min-height: 500px; */
+  }
    .why-cards { grid-template-columns: 1fr; } 
     .why-section {
     min-height: 0 !important;
@@ -13794,6 +13796,9 @@ h3 {
     }
         .contact-visual-content h2 {
         font-size: 28px !important;
+    }
+    .btn {
+      font-size: clamp(12px, min(4.9vw, 3.7vh), 22px);
     }
 
   }
