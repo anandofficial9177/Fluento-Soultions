@@ -1718,8 +1718,17 @@ p{
 
 /* ── ABOUT SECTION ── */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-@media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { 
+  .about-grid { grid-template-columns: 1fr !important; gap: 32px;
+   } 
+   .about-illustration {
+  height: 10px !important;
+  width: 90vw !important;
+}
+
+  }
 .about-illustration {
+
   border-radius: 20px;
   overflow: hidden;
   background: linear-gradient(135deg, var(--navy), #1a2f5a);
@@ -2640,7 +2649,7 @@ p{
    MOBILE
    ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
   .program-track {
     grid-template-columns:
@@ -4617,7 +4626,64 @@ p{
   overflow: hidden;
 }
 .why-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; height: 450px; }
-@media (max-width: 640px) { .why-cards { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) {
+  .about-hero-title {
+        font-size: clamp(43px, 6vw, 116px ) !important;
+  }
+  .about-story-heading h2 {
+    line-height: 1.5 !important;
+    font-size: clamp(30px, 3vw, 89px) !important;
+    letter-spacing: -2px !important;}
+    .about-values-grid {
+    display: contents !important;}
+    .about-team-left h2 {
+        font-size: 41px !important;}
+  .hero {
+    min-height: 500px;}
+   .why-cards { grid-template-columns: 1fr; } 
+    .why-section {
+    min-height: 0 !important;
+    padding: 40px 20px !important;
+
+    /* Don't use flex here */
+    display: block !important;
+  }
+
+  .why-section .inner {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+
+    /* Reset any vertical centering */
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important;
+  }
+
+  .why-section .sh,
+  .why-section .sh-center {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    transform: none !important;
+  }
+
+  .why-section .why-cards {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    margin-top: 40px !important;
+  }
+
+  .how-hero-meta span {
+    font-size: 20px !important;
+  }
+  .how-stage-node {
+        left: -4% !important;
+    }
+        .contact-visual-content h2 {
+        font-size: 28px !important;
+    }
+
+  }
 .why-card { padding: 28px; border-radius: 18px; }
 .why-card-traditional { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
 .why-card-fluento { background: rgba(37,99,235,.1); border: 1px solid rgba(37,99,235,.25); }
@@ -4648,7 +4714,7 @@ p{
 .journey-track-fill { height: 100%; background: var(--grad); width: 0; border-radius: 2px; transition: width 2.2s ease 0.5s; }
 .journey-track-fill.animated { width: 100%; }
 .journey-steps { display: grid; grid-template-columns: repeat(6, 1fr); position: relative; z-index: 1; }
-@media (max-width: 640px) {
+@media (max-width: 1000px) {
   .journey-steps { grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .journey-track { display: none; }
 }
@@ -7320,7 +7386,7 @@ color: #fff;}
    TABLET
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
   .about-team-showcase {
     grid-template-columns: 1fr;
@@ -11908,13 +11974,13 @@ font-family: "Recursive", "sans-serif" !important;
 
   font-family: var(--font-heading);
 
-  font-size: 25px;
+  /* font-size: 25px;
 
   line-height: 1.13;
 
   font-weight: 800;
 
-  letter-spacing: -0.6px;
+  letter-spacing: -0.6px; */
 }
 
 
@@ -13374,7 +13440,7 @@ h3 {
 ───────────────────────────────────────────────────────────────*/
 .about-grid {
   gap:                   clamp(20px, 3.5vw, 56px) !important;
-  grid-template-columns: 1fr 1fr !important;
+  grid-template-columns: 1fr 1fr ;
 }
 
 .about-illustration {
@@ -13689,7 +13755,7 @@ h3 {
   .programs-section { padding-top: 8vh !important;
      padding-bottom: 3vh !important; }
   .programs-heading { margin-bottom: 2.5vh !important; }
-  .program-card     { min-height: 38vh !important; }
+  .program-card     { min-height: 58vh !important; }
 
   /* ── Testimonials ── */
   .testimonial-card { padding: 1.5vh !important; }
